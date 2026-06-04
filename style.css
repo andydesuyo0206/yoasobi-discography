@@ -103,7 +103,10 @@ a:hover { color: var(--gold-bright); }
 .site-nav {
   display: flex; align-items: center; gap: 0.15rem;
   overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.site-nav::-webkit-scrollbar { display: none; }
 .nav-link {
   position: relative;
   display: block; padding: 0.45rem 0.9rem;

@@ -90,18 +90,18 @@ const DATA = {
       title:"三原色", titleEn:"Sangenshoku", year:2021, date:"2021年4月2日",
       cert:"3×プラチナム（配信）", chart:"Oricon Combined #3",
       artwork: WM("Yoasobi - Sangenshoku.jpeg"),
-      novel:"RGB / 小御門優一郎",
+      novel:"RGB / 小御門優一郎 （ahamo × YOASOBI 特設サイトで公開中）",
       theme:"疎遠になった幼馴染3人の再会と友情の再生。赤・緑・青の三原色が交わって白になるように、異なる個性が融合する喜び。",
-      background:"ayaseが「友人への手紙のように書いた」と語る楽曲。イントロのピアノとラストのコーラスが展開する構成は、関係の修復を音で表現している。",
+      background:"NTTドコモ「ahamo」CMソングとして制作。原作小説「RGB」はahamo公式サイトで無料公開中。ayaseが「友人への手紙のように書いた」と語る楽曲で、イントロのピアノとラストのコーラスの展開が関係の修復を音で表現している。",
       reception:"3×プラチナム認定。卒業式・送辞での使用例が多く、友情・絆をテーマにした楽曲として教育現場でも高い人気。"
     },
     {
       title:"ラブレター", titleEn:"Loveletter", year:2021, date:"2021年7月1日",
       cert:"プラチナム（配信）", chart:"Oricon Combined #3",
       artwork: WM("Yoasobi - Love Letter.jpeg"),
-      novel:"ラブレター / むつき潤",
-      theme:"死別した恋人への手紙という形式で綴られる、永遠の愛の告白。生きているうちに言えなかった言葉。",
-      background:"ゆったりとしたテンポとikuraの情感豊かなボーカルが際立つバラード。THE BOOK 2のリリースに合わせた楽曲群の一角を担う。",
+      novel:"音楽さんへ（手紙）/ はつね（当時小学6年生）",
+      theme:"「音楽への感謝」を綴った小学生の手紙が原作。従来の小説ではなく実際のファンの手紙を原作にしたYOASOBI唯一の楽曲。「音楽さん、ありがとう」という純粋な感謝が、ikuraの歌声によって昇華される。",
+      background:"TOKYO FM「日本郵便 SUNDAY'S POST」内の企画「レターソングプロジェクト」から誕生。「音楽への感謝」をテーマに全国から手紙を募集し、当時小学6年生のはつねさんの手紙が選ばれた。原作の手紙はTOKYO FM公式でPDF公開中。",
       reception:"プラチナム認定。感情的な歌詞とメロディが高く評価され、ライブでの披露時には会場が静まり返るとファンが証言。"
     },
     {
@@ -117,9 +117,9 @@ const DATA = {
       title:"ツバメ", titleEn:"Tsubame", year:2021, date:"2021年12月1日",
       cert:"プラチナム（配信）", chart:"Oricon Combined #29",
       artwork: WM("Yoasobi - Tsubame.jpg"),
-      novel:"ツバメ / 水上下波",
-      theme:"厳しい世界でもがきながら生きる人間の姿を、鳥のツバメになぞらえた応援歌。「翼を広げて飛べ」という祈り。",
-      background:"THE BOOK 2の締めくくり楽曲。レコーディングの際、ikuraが「自分の人生と重なった」と話し涙したエピソードが知られる。",
+      novel:"小さなツバメの大きな夢 / 乙月なな（NHK SDGsコンテスト最優秀作）",
+      theme:"自由に空を飛ぶツバメになぞらえた、未来への希望と挑戦。NHK SDGs番組のために書かれた、子どもたちへのエール。YOASOBI with ミドリーズとしてリリースされた異色作。",
+      background:"NHK子ども向けSDGs番組「ひろがれ！いろとりどり」テーマソング。6〜19歳対象の公募コンテスト「YOASOBIとつくる 未来のうた」の最優秀作が原作。子どもたちによる合唱ユニット「ミドリーズ」と共演し、YOASOBI with ミドリーズ名義でリリース。",
       reception:"プラチナム認定。THE BOOK 2の中でも特に感情的な楽曲として、ライブのクライマックスを飾ることが多い。"
     },
     {
@@ -326,9 +326,9 @@ const DATA = {
         {title:"怪物", novel:"自分の胸に自分の耳を押し当てて / 板垣巴留"},
         {title:"優しい彗星", novel:"獅子座流星群のままに / 板垣巴留"},
         {title:"三原色", novel:"RGB / 小御門優一郎"},
-        {title:"ラブレター", novel:"ラブレター / むつき潤"},
+        {title:"ラブレター", novel:"音楽さんへ（手紙）/ はつね"},
         {title:"大正浪漫", novel:"大正浪漫 / NATSUMI"},
-        {title:"ツバメ", novel:"ツバメ / 水上下波"},
+        {title:"ツバメ", novel:"小さなツバメの大きな夢 / 乙月なな"},
       ],
       concept:"アニメ「BEASTARS」とのコラボを含む、YOASOBIの表現の幅が格段に広がった第2弾。板垣巴留が書き下ろした短編小説2作を原作に持つ楽曲を収録し、漫画原作者とのコラボという新機軸を打ち出した。",
       reception:"Billboard Japan Hot Albums 1位。プラチナム認定。「怪物」のアニメ効果で従来ファン以外にもリーチし、YOASOBIのブランドを大幅に拡大した。"
