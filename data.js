@@ -123,12 +123,12 @@ const DATA = {
       reception:"プラチナム認定。THE BOOK 2の中でも特に感情的な楽曲として、ライブのクライマックスを飾ることが多い。"
     },
     {
-      title:"Mr.", titleEn:"Mr.", year:2022, date:"2022年1月28日",
+      title:"ミスター", titleEn:"Mister", year:2022, date:"2022年1月28日",
       cert:"ゴールド（配信）", chart:"Oricon Combined #19",
       artwork: WM("Yoasobi - Mr.jpg"),
-      novel:"ストーカーとは楽しいものですよ / 真田まこと",
-      theme:"一方的な愛が屈折していく過程を描く。ストーカーという暗いテーマを軽快なポップサウンドで包み込んだ異色作。",
-      background:"タイトル「Mr.」はストーカー視点での相手への呼称。ダークなテーマを明るいメロディでカバーするayaseの作曲センスが光る。",
+      novel:"私だけの所有者 / 清水朔（第159回直木賞受賞作家）",
+      theme:"アンドロイドが「所有者」に向ける一方的な愛情と執着。人間とアンドロイドの境界を問う近未来SF的な物語。",
+      background:"直木賞作家・清水朔が書き下ろした短編小説が原作。「ミスター」という呼称はアンドロイドが所有者を呼ぶ称号。ダークなSFテーマを軽快なポップサウンドで包んだ異色作。",
       reception:"ゴールド認定。テーマの独自性が話題を呼び、YOASOBIの楽曲の幅広さを改めて示した作品として評価。"
     },
     {
@@ -226,10 +226,10 @@ const DATA = {
       title:"モノトーン", titleEn:"Monotone", year:2024, date:"2024年11月1日",
       cert:"—", chart:"Oricon Combined #24",
       artwork: WM("Yoasobi - Monotone.png"),
-      novel:"（原作小説: 非公開）",
-      theme:"白と黒の間に存在する無限のグレー。善悪の二項対立では割り切れない人間の複雑さと、それを受け入れる覚悟。",
-      background:"ドーム公演「超現実 Dome Live」開催時期に合わせたリリース。モノクロームのアートワークがYOASOBIの新たなビジュアルフェーズを示す。",
-      reception:"ドーム公演という歴史的節目と連動したリリースとして注目。複雑な世界観がリスナーの想像力を掻き立て、考察ファンを生んだ。"
+      novel:"モノトーン / 東村アキコ（映画「フレル」コラボ）",
+      theme:"白と黒の間に存在する無限のグレー。善悪の二項対立では割り切れない人間の複雑さと、それを受け入れる覚悟。映画「フレル」のために書き下ろされた。",
+      background:"映画「フレル」主題歌として制作。東村アキコが映画のために書き下ろした短編小説が原作。ドーム公演「超現実 Dome Live」開催時期とも重なり、モノクロームのビジュアルが話題に。",
+      reception:"映画公開と同時リリースにより映画ファンからも支持を獲得。原作小説は映画公式サイトで無料公開中。"
     },
     {
       title:"New Me", titleEn:"New Me", year:2024, date:"2024年12月6日",
@@ -277,6 +277,15 @@ const DATA = {
       background:"TVアニメ「花ざかりの君たちへ」OPテーマとして制作。「BABY」と同時発売のダブルA面シングル。",
       reception:"Oricon Combined #42。アニメ放送と同時の話題性でSNSに拡散。YOASOBIの2026年最初のリリース作品。"
     },
+    {
+      title:"BABY", titleEn:"Baby", year:2026, date:"2026年1月4日（デジタル）/ 3月4日（CD）",
+      cert:"—", chart:"—",
+      artwork: WM("Yoasobi - Baby.png"),
+      novel:"My Dear…… / 青木祥樹（Studio Monad）",
+      theme:"「BABY」と呼びかける言葉に込めた、無条件の愛と保護欲。「アドレナ」の疾走感とは対照的な、柔らかく包み込むバラード。",
+      background:"「アドレナ」のカップリングとして「花ざかりの君たちへ」EDテーマに起用。同じアニメのOPとEDをYOASOBIが担当するのは異例の抜擢。",
+      reception:"「アドレナ」との対比が話題に。バラード調の楽曲を求めるファンから高い支持を獲得。"
+    },
     // UPCOMING
     {
       title:"オリオン", titleEn:"Orion", year:2026, date:"2026年6月26日（デジタル）",
@@ -287,15 +296,6 @@ const DATA = {
       background:"世界的人気FPS「オーバーウォッチ」とのコラボ楽曲。東京を舞台にした新マップに合わせてゲーム内短編小説を原作に制作。米国ではアナログ盤（オーバーウォッチコラボジャケット）も限定発売。",
       reception:"2026年6月26日リリース予定（UPCOMING）。ゲーム×音楽のクロスオーバーとして世界中のファンから注目を集めている。",
       highlight: false, upcoming: true
-    },
-    {
-      title:"BABY", titleEn:"Baby", year:2026, date:"2026年1月4日（デジタル）/ 3月4日（CD）",
-      cert:"—", chart:"—",
-      artwork: WM("Yoasobi - Baby.png"),
-      novel:"My Dear…… / 青木祥樹（Studio Monad）",
-      theme:"「BABY」と呼びかける言葉に込めた、無条件の愛と保護欲。「アドレナ」の疾走感とは対照的な、柔らかく包み込むバラード。",
-      background:"「アドレナ」のカップリングとして「花ざかりの君たちへ」EDテーマに起用。同じアニメのOPとEDをYOASOBIが担当するのは異例の抜擢。",
-      reception:"「アドレナ」との対比が話題に。バラード調の楽曲を求めるファンから高い支持を獲得。"
     },
   ],
 
@@ -371,7 +371,7 @@ const DATA = {
       catalog:"XSCL-61", sales:"約5,300枚", cert:"—", chart:"—",
       artwork: WM("Yoasobi - E-Side 2.png"),
       tracks:[
-        {title:"Mr.", novel:"(Mr. 英語版)"},
+        {title:"Mister", novel:"(ミスター 英語版)"},
         {title:"Suki Da", novel:"(好きだ 英語版)"},
         {title:"Blessing", novel:"(祝福 英語版)"},
       ],

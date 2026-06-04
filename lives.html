@@ -7,8 +7,46 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     .lives-wrap { max-width:1050px; margin:0 auto; padding:0 1.5rem 5rem; display:flex; flex-direction:column; gap:3rem; }
+
+    /* ===== MAP ===== */
+    .map-section { display:flex; flex-direction:column; gap:1rem; }
+    #liveMap {
+      height: 420px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .leaflet-container { background: #0a0a18 !important; }
+    .leaflet-tile { filter: brightness(0.7) saturate(0.6) hue-rotate(200deg); }
+    /* カスタムポップアップ */
+    .leaflet-popup-content-wrapper {
+      background: #0f0f20 !important;
+      border: 1px solid #34345a !important;
+      border-radius: 8px !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.7) !important;
+      color: #c0c0e0 !important;
+    }
+    .leaflet-popup-tip { background: #0f0f20 !important; }
+    .leaflet-popup-content { margin: 10px 14px !important; font-family: 'Inter', sans-serif !important; }
+    .map-popup-name { font-weight: 700; font-size: 0.88rem; color: #f0f0ff; margin-bottom: 3px; }
+    .map-popup-loc { font-size: 0.75rem; color: #9090c0; }
+    .map-popup-date { font-size: 0.72rem; color: #c41960; margin-top: 2px; font-weight: 600; }
+    /* 凡例 */
+    .map-legend {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      padding: 0.75rem 1rem;
+      background: rgba(11,18,40,0.7);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.72rem; color: var(--muted);
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
     /* サマリーカード */
     .summary-grid {
@@ -177,6 +215,18 @@
       <div class="summary-grid" id="summaryGrid"></div>
     </section>
 
+    <!-- 世界地図 -->
+    <section class="map-section">
+      <div class="lives-section-title">World Map — Live Venues</div>
+      <div id="liveMap"></div>
+      <div class="map-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#c41960;"></div>国内公演</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2244ff;"></div>海外公演</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2dd4bf;"></div>フェス</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#e05080;box-shadow:0 0 6px #e05080;"></div>今後の公演</div>
+      </div>
+    </section>
+
     <!-- UPCOMING -->
     <section>
       <div class="lives-section-title" style="color:var(--rose);">⬡ Upcoming Tours</div>
@@ -207,6 +257,76 @@
 
 <script src="data.js"></script>
 <script>
+  /* ===== LEAFLET MAP ===== */
+  const map = L.map('liveMap', { zoomControl: true, scrollWheelZoom: false })
+    .setView([30, 20], 2);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a>',
+    maxZoom: 18,
+  }).addTo(map);
+
+  function makeIcon(color, glow) {
+    return L.divIcon({
+      className: '',
+      html: `<div style="
+        width:12px;height:12px;border-radius:50%;
+        background:${color};
+        border:2px solid rgba(255,255,255,0.5);
+        box-shadow:0 0 ${glow ? '10px 3px' : '6px 1px'} ${color};
+      "></div>`,
+      iconSize: [12, 12],
+      iconAnchor: [6, 6],
+      popupAnchor: [0, -8],
+    });
+  }
+
+  const iconDom    = makeIcon('#c41960', false);
+  const iconOvs    = makeIcon('#2244ff', false);
+  const iconFest   = makeIcon('#2dd4bf', false);
+  const iconUpcome = makeIcon('#e05080', true);
+
+  const venues = [
+    // 国内公演
+    { lat:35.7057, lng:139.7517, name:'東京ドーム', loc:'東京', date:'2024年11月', type:'dom' },
+    { lat:34.6732, lng:135.4764, name:'京セラドーム大阪', loc:'大阪', date:'2024年10月', type:'dom' },
+    { lat:35.8939, lng:139.6267, name:'さいたまスーパーアリーナ', loc:'埼玉', date:'2023年4〜6月', type:'dom' },
+    { lat:35.5094, lng:139.6188, name:'横浜アリーナ', loc:'神奈川', date:'2023年4〜6月', type:'dom' },
+    { lat:34.6873, lng:135.5284, name:'大阪城ホール', loc:'大阪', date:'2023年4〜6月', type:'dom' },
+    { lat:35.4437, lng:139.6380, name:'横浜赤レンガ倉庫（Echoes Baa）', loc:'横浜', date:'2025年4月', type:'fest' },
+    { lat:35.6762, lng:139.6503, name:'Zepp Tokyo / Shibuya', loc:'東京', date:'2024年1〜3月', type:'dom' },
+    // 海外公演
+    { lat:33.6800, lng:-116.2379, name:'Coachella Valley Music & Arts Festival', loc:'カリフォルニア州インディオ, USA', date:'2024年4月', type:'fest' },
+    { lat:41.8766, lng:-87.6298, name:'Lollapalooza', loc:'シカゴ, USA', date:'2024年8月', type:'fest' },
+    { lat:40.7600, lng:-73.9800, name:'Radio City Music Hall', loc:'ニューヨーク, USA', date:'2024年12月〜', type:'ovs' },
+    { lat:34.1478, lng:-118.1445, name:'Head in the Clouds USA', loc:'パサデナ, USA', date:'2023年8月', type:'fest' },
+    { lat:51.5560, lng:-0.2796, name:'OVO Arena Wembley', loc:'ロンドン, UK', date:'2024年12月〜', type:'ovs' },
+    { lat:41.3851, lng:2.1734, name:'Primavera Sound Barcelona', loc:'バルセロナ, スペイン', date:'2025年5〜6月', type:'fest' },
+    { lat:22.2855, lng:114.1577, name:'Clockenflap', loc:'香港', date:'2023年3月', type:'fest' },
+    { lat:-6.2088, lng:106.8456, name:'Head in the Clouds Jakarta', loc:'ジャカルタ, インドネシア', date:'2022年12月', type:'fest' },
+    { lat:25.0330, lng:121.5654, name:'Asia Tour（台北）', loc:'台北, 台湾', date:'2023年12月〜', type:'ovs' },
+    { lat:37.5665, lng:126.9780, name:'Asia Tour（ソウル）', loc:'ソウル, 韓国', date:'2023年12月〜', type:'ovs' },
+    // UPCOMING
+    { lat:34.6732, lng:135.5000, name:'UPCOMING: 大阪（Dome Tour 2026）', loc:'大阪', date:'2026年10月24・25日', type:'upcoming' },
+    { lat:35.1815, lng:136.9066, name:'UPCOMING: 名古屋（Dome Tour 2026）', loc:'名古屋', date:'2026年11月7・8日', type:'upcoming' },
+    { lat:43.0618, lng:141.3545, name:'UPCOMING: 北海道（Dome Tour 2026）', loc:'北海道', date:'2026年11月14・15日', type:'upcoming' },
+    { lat:33.5904, lng:130.4017, name:'UPCOMING: 福岡（Dome Tour 2026）', loc:'福岡', date:'2026年11月28・29日', type:'upcoming' },
+    { lat:35.7057, lng:139.7617, name:'UPCOMING: 東京（Dome Tour 2026）', loc:'東京', date:'2026年12月5・6日', type:'upcoming' },
+  ];
+
+  venues.forEach(v => {
+    const icon = v.type==='upcoming' ? iconUpcome
+                : v.type==='fest' ? iconFest
+                : v.type==='dom' ? iconDom : iconOvs;
+    L.marker([v.lat, v.lng], { icon })
+      .addTo(map)
+      .bindPopup(`
+        <div class="map-popup-name">${v.name}</div>
+        <div class="map-popup-loc">📍 ${v.loc}</div>
+        <div class="map-popup-date">${v.date}</div>
+      `);
+  });
+
   const lives = DATA.lives;
 
   /* ===== UPCOMING ===== */
