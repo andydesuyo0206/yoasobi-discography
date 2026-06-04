@@ -5,8 +5,340 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profile — YOASOBI Discography</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* プロフィール専用スタイル */
+    .profile-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* ユニット概要 */
+    .unit-card {
+      background: rgba(11,18,40,0.7);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .unit-card-header {
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(135deg, rgba(74,143,255,0.08) 0%, rgba(245,200,66,0.06) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .unit-concept {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+    .unit-meta-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+    .unit-meta-item {
+      text-align: center;
+    }
+    .unit-meta-label {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .unit-meta-value {
+      font-size: 0.88rem;
+      color: var(--prose);
+      font-weight: 500;
+    }
+    .unit-card-body {
+      padding: 1.75rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .unit-story-label {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 0.1rem;
+    }
+    .unit-story-text {
+      font-size: 0.9rem;
+      color: var(--prose);
+      line-height: 1.8;
+    }
+    .name-origin {
+      background: rgba(245,200,66,0.05);
+      border: 1px solid rgba(245,200,66,0.18);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+    .name-origin-label {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .name-origin-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* メンバーカード */
+    .members-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .member-full-card {
+      background: rgba(11,18,40,0.7);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+    }
+    .member-visual {
+      background: linear-gradient(160deg, var(--surface-2) 0%, var(--bg-2) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1.5rem;
+      gap: 1.25rem;
+      border-right: 1px solid var(--border);
+    }
+    .member-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .avatar-ayase {
+      background: linear-gradient(135deg, var(--blue) 0%, #2dd4bf 100%);
+      box-shadow: 0 0 24px rgba(74,143,255,0.4);
+      color: white;
+      font-family: 'Inter', sans-serif;
+    }
+    .avatar-ikura {
+      background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
+      box-shadow: 0 0 24px rgba(244,114,182,0.4);
+      color: white;
+      font-family: 'Inter', sans-serif;
+    }
+    .member-name-block {
+      text-align: center;
+    }
+    /* ← ここが大文字に見える原因。Cinzelを使わず Inter に変更 */
+    .member-name-display {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+    .member-realname {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+    .member-role-badge {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      border: 1px solid rgba(74,143,255,0.3);
+      border-radius: 3px;
+      padding: 0.2rem 0.6rem;
+      text-align: center;
+    }
+    .member-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      justify-content: center;
+    }
+    .tag {
+      font-size: 0.62rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.15rem 0.5rem;
+    }
+
+    .member-detail {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .detail-key {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .detail-val {
+      font-size: 0.82rem;
+      color: var(--prose);
+    }
+    .member-bio-text {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.8;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .member-solo {
+      font-size: 0.8rem;
+      color: var(--blue-bright);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .member-solo::before {
+      content: '◆';
+      font-size: 0.45rem;
+      color: var(--blue);
+    }
+
+    /* 実績 */
+    .achievements-card {
+      background: rgba(11,18,40,0.7);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+    .achiev-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+    .achiev-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.85rem 1rem;
+      background: rgba(245,200,66,0.04);
+      border: 1px solid rgba(245,200,66,0.12);
+      border-radius: 8px;
+    }
+    .achiev-gem {
+      color: var(--gold);
+      font-size: 0.5rem;
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+    .achiev-text {
+      font-size: 0.83rem;
+      color: var(--prose);
+      line-height: 1.6;
+    }
+
+    /* タイムライン */
+    .timeline-card {
+      background: rgba(11,18,40,0.7);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+    .timeline-new {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1.25rem;
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1rem;
+    }
+    .tl-year-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .tl-year {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .tl-line {
+      flex: 1;
+      width: 1px;
+      background: var(--border);
+      margin: 0.4rem 0;
+    }
+    .tl-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin: 0.35rem 0 0;
+    }
+    .tl-body {
+      padding: 0.1rem 0 1.75rem;
+    }
+    .tl-item:last-child .tl-body {
+      padding-bottom: 0;
+    }
+    .tl-text {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 680px) {
+      .member-full-card { grid-template-columns: 1fr; }
+      .member-visual { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--border); padding: 1.5rem; }
+      .member-name-block { text-align: left; }
+      .member-tags { justify-content: flex-start; }
+      .detail-grid { grid-template-columns: 1fr 1fr; }
+      .achiev-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -34,7 +366,7 @@
     </div>
   </div>
 
-  <section class="profile-section" id="profileSection"></section>
+  <div class="profile-wrap" id="profileWrap"></div>
 </main>
 
 <footer class="site-footer">
@@ -49,62 +381,147 @@
 
 <script src="data.js"></script>
 <script>
-  const section = document.getElementById('profileSection');
+  const wrap = document.getElementById('profileWrap');
   const p = DATA.profile;
 
-  // Concept card
-  section.innerHTML += `
-    <div class="profile-concept-card">
-      <div class="profile-concept-text">"${p.concept}"</div>
-      <div class="profile-concept-meta">Debut: ${p.debut} · Label: ${p.label}</div>
-    </div>
-  `;
-
-  // Members
-  const membersHtml = p.members.map(m => `
-    <div class="member-card">
-      <div class="member-role">${m.role}</div>
-      <div class="member-name">${m.name}</div>
-      <div class="member-info">
-        <div class="member-info-row"><span class="info-key">生年月日</span><span class="info-val">${m.born}</span></div>
-        <div class="member-info-row"><span class="info-key">出身地</span><span class="info-val">${m.birthplace}</span></div>
-      </div>
-      <p class="member-bio">${m.bio}</p>
-    </div>
-  `).join('');
-
-  section.innerHTML += `
-    <div>
-      <p class="section-sub-title">Members</p>
-      <div class="members-grid">${membersHtml}</div>
-    </div>
-  `;
-
-  // Achievements
-  const achHtml = p.achievements.map(a => `<li>${a}</li>`).join('');
-  section.innerHTML += `
-    <div>
-      <p class="section-sub-title">Major Achievements</p>
-      <ul class="achievement-list">${achHtml}</ul>
-    </div>
-  `;
-
-  // Timeline
-  const tlHtml = p.timeline.map(t => `
-    <div class="timeline-item">
-      <span class="timeline-year">${t.year}</span>
-      <div class="timeline-body">
-        <p class="timeline-text">${t.text}</p>
+  /* ===== 1. ユニット概要 ===== */
+  const unitCard = document.createElement('div');
+  unitCard.className = 'unit-card';
+  unitCard.innerHTML = `
+    <div class="unit-card-header">
+      <div class="unit-concept">"${p.concept}"</div>
+      <p style="font-size:0.85rem;color:var(--muted);">ayase × ikura からなる2人組音楽ユニット</p>
+      <div class="unit-meta-row">
+        <div class="unit-meta-item">
+          <span class="unit-meta-label">Debut</span>
+          <span class="unit-meta-value">${p.debut}</span>
+        </div>
+        <div class="unit-meta-item">
+          <span class="unit-meta-label">Label</span>
+          <span class="unit-meta-value">${p.label}</span>
+        </div>
+        <div class="unit-meta-item">
+          <span class="unit-meta-label">Genre</span>
+          <span class="unit-meta-value">J-Pop / Electro-Pop</span>
+        </div>
+        <div class="unit-meta-item">
+          <span class="unit-meta-label">Origin</span>
+          <span class="unit-meta-value">monogatary.com</span>
+        </div>
       </div>
     </div>
-  `).join('');
-
-  section.innerHTML += `
-    <div>
-      <p class="section-sub-title">Timeline</p>
-      <div class="timeline">${tlHtml}</div>
+    <div class="unit-card-body">
+      <div>
+        <div class="unit-story-label">結成の経緯</div>
+        <p class="unit-story-text">${p.formation.story}</p>
+      </div>
+      <div class="name-origin">
+        <div class="name-origin-label">ユニット名の由来</div>
+        <p class="name-origin-text">${p.formation.nameOrigin}</p>
+      </div>
     </div>
   `;
+  wrap.appendChild(unitCard);
+
+  /* ===== 2. メンバーカード ===== */
+  const membersSection = document.createElement('div');
+  membersSection.className = 'members-section';
+  membersSection.innerHTML = `
+    <div class="section-sub-title" style="margin-bottom:0;">Members</div>
+  `;
+
+  p.members.forEach(m => {
+    const isAyase = m.name === 'ayase';
+    const initial = isAyase ? 'A' : 'i';
+    const avatarClass = isAyase ? 'avatar-ayase' : 'avatar-ikura';
+    const tags = m.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+    const card = document.createElement('div');
+    card.className = 'member-full-card';
+    card.innerHTML = `
+      <!-- 左: ビジュアル -->
+      <div class="member-visual">
+        <div class="member-avatar ${avatarClass}">${initial}</div>
+        <div class="member-name-block">
+          <div class="member-name-display">${m.name}</div>
+          ${m.realName ? `<div class="member-realname">${m.realName}</div>` : ''}
+        </div>
+        <div class="member-role-badge">${m.role}</div>
+        <div class="member-tags">${tags}</div>
+      </div>
+
+      <!-- 右: 詳細 -->
+      <div class="member-detail">
+        <div class="detail-grid">
+          <div class="detail-item">
+            <span class="detail-key">生年月日</span>
+            <span class="detail-val">${m.born}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-key">年齢</span>
+            <span class="detail-val">${m.age}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-key">出身</span>
+            <span class="detail-val">${m.birthplace}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-key">身長</span>
+            <span class="detail-val">${m.height}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-key">血液型</span>
+            <span class="detail-val">${m.bloodType}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-key">担当</span>
+            <span class="detail-val">${m.origin}</span>
+          </div>
+        </div>
+        <p class="member-bio-text">${m.bio}</p>
+        <div class="member-solo">${m.solo}</div>
+      </div>
+    `;
+    membersSection.appendChild(card);
+  });
+
+  wrap.appendChild(membersSection);
+
+  /* ===== 3. 主な実績 ===== */
+  const achievCard = document.createElement('div');
+  achievCard.className = 'achievements-card';
+  const achievItems = p.achievements.map(a => `
+    <div class="achiev-item">
+      <span class="achiev-gem">◆</span>
+      <span class="achiev-text">${a}</span>
+    </div>
+  `).join('');
+  achievCard.innerHTML = `
+    <div class="section-sub-title">Major Achievements</div>
+    <div class="achiev-grid">${achievItems}</div>
+  `;
+  wrap.appendChild(achievCard);
+
+  /* ===== 4. タイムライン ===== */
+  const tlCard = document.createElement('div');
+  tlCard.className = 'timeline-card';
+  const tlItems = p.timeline.map((t, i) => `
+    <div class="tl-item">
+      <div class="tl-year-col">
+        <div class="tl-dot"></div>
+        <div class="tl-year">${t.year}</div>
+        ${i < p.timeline.length - 1 ? '<div class="tl-line"></div>' : ''}
+      </div>
+      <div class="tl-body">
+        <p class="tl-text">${t.text}</p>
+      </div>
+    </div>
+  `).join('');
+  tlCard.innerHTML = `
+    <div class="section-sub-title">Timeline</div>
+    <div class="timeline-new">${tlItems}</div>
+  `;
+  wrap.appendChild(tlCard);
 </script>
 </body>
 </html>
