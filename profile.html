@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile — YOASOBI Discography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="rainbow-rule" style="position:absolute;top:0;left:0;right:0;"></div>
+  <div class="header-inner">
+    <a href="index.html" class="site-brand" style="text-decoration:none;">
+      <span class="brand-name">YOASOBI</span>
+      <span class="brand-sub">Discography</span>
+    </a>
+    <nav class="site-nav">
+      <a href="singles.html" class="nav-link" data-color="blue">Singles</a>
+      <a href="albums.html" class="nav-link" data-color="gold">EPs</a>
+      <a href="profile.html" class="nav-link active" data-color="rose">Profile</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <a href="index.html" class="page-back">← Back</a>
+      <h1 class="page-title"><span class="accent">Profile</span></h1>
+      <p class="page-subtitle">Ayase × ikura — 小説を音楽にするユニット</p>
+    </div>
+  </div>
+
+  <section class="profile-section" id="profileSection"></section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="rainbow-rule" style="margin-bottom:1.5rem;"></div>
+    <p class="footer-text">
+      YOASOBI Discography Archive &copy; 2025 — Fan-made site.<br>
+      <a href="https://www.yoasobi-music.jp/" target="_blank" rel="noopener">Official Site</a>
+    </p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  const section = document.getElementById('profileSection');
+  const p = DATA.profile;
+
+  // Concept card
+  section.innerHTML += `
+    <div class="profile-concept-card">
+      <div class="profile-concept-text">"${p.concept}"</div>
+      <div class="profile-concept-meta">Debut: ${p.debut} · Label: ${p.label}</div>
+    </div>
+  `;
+
+  // Members
+  const membersHtml = p.members.map(m => `
+    <div class="member-card">
+      <div class="member-role">${m.role}</div>
+      <div class="member-name">${m.name}</div>
+      <div class="member-info">
+        <div class="member-info-row"><span class="info-key">生年月日</span><span class="info-val">${m.born}</span></div>
+        <div class="member-info-row"><span class="info-key">出身地</span><span class="info-val">${m.birthplace}</span></div>
+      </div>
+      <p class="member-bio">${m.bio}</p>
+    </div>
+  `).join('');
+
+  section.innerHTML += `
+    <div>
+      <p class="section-sub-title">Members</p>
+      <div class="members-grid">${membersHtml}</div>
+    </div>
+  `;
+
+  // Achievements
+  const achHtml = p.achievements.map(a => `<li>${a}</li>`).join('');
+  section.innerHTML += `
+    <div>
+      <p class="section-sub-title">Major Achievements</p>
+      <ul class="achievement-list">${achHtml}</ul>
+    </div>
+  `;
+
+  // Timeline
+  const tlHtml = p.timeline.map(t => `
+    <div class="timeline-item">
+      <span class="timeline-year">${t.year}</span>
+      <div class="timeline-body">
+        <p class="timeline-text">${t.text}</p>
+      </div>
+    </div>
+  `).join('');
+
+  section.innerHTML += `
+    <div>
+      <p class="section-sub-title">Timeline</p>
+      <div class="timeline">${tlHtml}</div>
+    </div>
+  `;
+</script>
+</body>
+</html>
