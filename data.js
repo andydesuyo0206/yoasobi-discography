@@ -150,7 +150,7 @@ const DATA = {
       reception:"3×プラチナム認定。アニメファン以外にも広く波及し、YOASOBIの海外認知度を大幅に引き上げた転換点となった楽曲。"
     },
     {
-      title:"ADVENTURE", titleEn:"Adventure", year:2023, date:"2023年1月20日",
+      title:"アドベンチャー", titleEn:"ADVENTURE", year:2023, date:"2023年1月20日",
       cert:"プラチナム（配信）", chart:"Oricon Combined #48",
       artwork: WM("Yoasobi - Adventure.png"),
       novel:"冒険者たち / さかしたみか",
@@ -339,7 +339,7 @@ const DATA = {
       catalog:"XSCL-111", sales:"約20万枚以上", cert:"ゴールド", chart:"Oricon Albums #2",
       artwork: WM("Yoasobi - The Book 3.png"),
       tracks:[
-        {title:"ADVENTURE", novel:"冒険者たち / さかしたみか"},
+        {title:"アドベンチャー", novel:"冒険者たち / さかしたみか"},
         {title:"セブンティーン", novel:"夢の雫と星の花（続編） / いしき蒼太"},
         {title:"アイドル", novel:"45510 / 赤坂アカ"},
         {title:"勇者", novel:"勇者 / 山田鐘人"},
