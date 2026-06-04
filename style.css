@@ -120,9 +120,10 @@ a:hover { color: var(--gold-bright); }
 }
 .nav-link.active::after,
 .nav-link:hover::after { transform: scaleX(1); }
-.nav-link[data-color="gold"]::after { background: linear-gradient(90deg, var(--gold), transparent); }
-.nav-link[data-color="teal"]::after { background: linear-gradient(90deg, var(--teal), transparent); }
-.nav-link[data-color="rose"]::after { background: linear-gradient(90deg, var(--rose), transparent); }
+.nav-link[data-color="gold"]::after   { background: linear-gradient(90deg, var(--gold), transparent); }
+.nav-link[data-color="teal"]::after   { background: linear-gradient(90deg, var(--teal), transparent); }
+.nav-link[data-color="rose"]::after   { background: linear-gradient(90deg, var(--rose), transparent); }
+.nav-link[data-color="purple"]::after { background: linear-gradient(90deg, #a78bfa, transparent); }
 
 /* ===== HERO ===== */
 .hero {
@@ -444,12 +445,19 @@ a:hover { color: var(--gold-bright); }
 .year-divider {
   grid-column: 1 / -1;
   display: flex; align-items: center; gap: 1rem;
-  padding: 0.75rem 0 0.25rem;
+  padding: 2rem 0 0.75rem;
+  margin-top: 0.5rem;
+}
+.year-divider:first-child {
+  padding-top: 0.25rem;
+  margin-top: 0;
 }
 .year-divider-text {
   font-family: 'Cinzel', Georgia, serif;
   font-size: 0.6rem; letter-spacing: 0.3em;
   color: var(--muted); text-transform: uppercase; white-space: nowrap;
+  background: var(--bg);
+  padding-right: 0.5rem;
 }
 .year-divider-line { flex: 1; height: 1px; background: var(--border); }
 
