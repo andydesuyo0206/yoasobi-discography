@@ -257,9 +257,16 @@
       gap: 0.75rem;
       align-items: flex-start;
       padding: 0.85rem 1rem;
-      background: rgba(245,200,66,0.04);
-      border: 1px solid rgba(245,200,66,0.12);
+      background: rgba(196,25,96,0.05);
+      border: 1px solid rgba(196,25,96,0.18);
       border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .achiev-item:hover {
+      background: rgba(196,25,96,0.1);
+      border-color: rgba(196,25,96,0.35);
+      transform: translateY(-1px);
     }
     .achiev-gem {
       color: var(--gold);
@@ -271,7 +278,18 @@
       font-size: 0.83rem;
       color: var(--prose);
       line-height: 1.6;
+      flex: 1;
     }
+    .achiev-hint {
+      font-size: 0.6rem;
+      color: var(--gold);
+      opacity: 0;
+      transition: opacity 0.2s;
+      margin-top: 0.3rem;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    .achiev-item:hover .achiev-hint { opacity: 1; }
 
     /* タイムライン */
     .timeline-card {
@@ -378,6 +396,21 @@
 
   <div class="profile-wrap" id="profileWrap"></div>
 </main>
+
+<!-- 実績モーダル -->
+<div class="modal-overlay" id="achievModalOverlay">
+  <div class="modal" style="grid-template-columns:1fr; max-width:520px;">
+    <button class="modal-close" id="achievModalClose">✕</button>
+    <div class="modal-body" style="padding:2rem;">
+      <div>
+        <div class="modal-badge" style="background:rgba(196,25,96,0.1);border-color:rgba(196,25,96,0.3);color:var(--gold);">Achievement</div>
+        <div class="modal-title-ja" id="achievTitle" style="font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:700;margin-top:0.6rem;line-height:1.5;"></div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section-content" id="achievDetail" style="line-height:1.9;"></div>
+    </div>
+  </div>
+</div>
 
 <!-- タイムラインモーダル -->
 <div class="modal-overlay" id="tlModalOverlay">
@@ -514,19 +547,33 @@
   wrap.appendChild(membersSection);
 
   /* ===== 3. 主な実績 ===== */
+  const achievOverlay = document.getElementById('achievModalOverlay');
+  const achievClose   = document.getElementById('achievModalClose');
+  achievClose.addEventListener('click', () => { achievOverlay.classList.remove('open'); document.body.style.overflow=''; });
+  achievOverlay.addEventListener('click', e => { if(e.target===achievOverlay){ achievOverlay.classList.remove('open'); document.body.style.overflow=''; }});
+
   const achievCard = document.createElement('div');
   achievCard.className = 'achievements-card';
-  const achievItems = p.achievements.map(a => `
-    <div class="achiev-item">
-      <span class="achiev-gem">◆</span>
-      <span class="achiev-text">${a}</span>
-    </div>
-  `).join('');
-  achievCard.innerHTML = `
-    <div class="section-sub-title">Major Achievements</div>
-    <div class="achiev-grid">${achievItems}</div>
-  `;
+  achievCard.innerHTML = `<div class="section-sub-title">Major Achievements <span style="font-family:'Inter';font-size:0.62rem;color:var(--muted);font-weight:400;letter-spacing:0.05em;">— クリックで詳細を表示</span></div><div class="achiev-grid" id="achievGrid"></div>`;
   wrap.appendChild(achievCard);
+
+  const achGrid = document.getElementById('achievGrid');
+  p.achievements.forEach(a => {
+    const item = document.createElement('div');
+    item.className = 'achiev-item';
+    item.innerHTML = `
+      <span class="achiev-gem">◆</span>
+      <span class="achiev-text">${a.text}</span>
+      <span class="achiev-hint">→</span>
+    `;
+    item.addEventListener('click', () => {
+      document.getElementById('achievTitle').textContent = a.text;
+      document.getElementById('achievDetail').textContent = a.detail;
+      achievOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    achGrid.appendChild(item);
+  });
 
   /* ===== 4. タイムライン ===== */
   const tlOverlay = document.getElementById('tlModalOverlay');

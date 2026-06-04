@@ -177,9 +177,15 @@
       <div class="summary-grid" id="summaryGrid"></div>
     </section>
 
+    <!-- UPCOMING -->
+    <section>
+      <div class="lives-section-title" style="color:var(--rose);">⬡ Upcoming Tours</div>
+      <div style="display:flex;flex-direction:column;gap:1rem;" id="upcomingGrid"></div>
+    </section>
+
     <!-- ツアー -->
     <section>
-      <div class="lives-section-title">Concert Tours</div>
+      <div class="lives-section-title">Past & Ongoing Concert Tours</div>
       <div style="display:flex;flex-direction:column;gap:1rem;" id="toursGrid"></div>
     </section>
 
@@ -202,6 +208,45 @@
 <script src="data.js"></script>
 <script>
   const lives = DATA.lives;
+
+  /* ===== UPCOMING ===== */
+  const ug = document.getElementById('upcomingGrid');
+  lives.upcoming.forEach(t => {
+    const venues = t.venues.map(v => `<span class="venue-chip">${v}</span>`).join('');
+    ug.innerHTML += `
+      <div class="tour-card highlight" style="border-color:rgba(255,77,151,0.4);">
+        <div class="tour-card-header">
+          <div class="tour-icon" style="background:rgba(255,77,151,0.1);border-color:rgba(255,77,151,0.3);">🎯</div>
+          <div class="tour-info">
+            <div class="tour-name">${t.name}</div>
+            <div class="tour-name-en">${t.nameEn}</div>
+            <div class="tour-tags">
+              <span class="tour-tag tag-upcoming">Upcoming</span>
+              ${t.highlight ? '<span class="tour-tag tag-overseas">★ Milestone</span>' : ''}
+            </div>
+          </div>
+        </div>
+        <div class="tour-stats-row">
+          <div class="tour-stat">
+            <span class="tour-stat-label">Period</span>
+            <span class="tour-stat-val">${t.period}</span>
+          </div>
+          <div class="tour-stat">
+            <span class="tour-stat-label">公演数</span>
+            <span class="tour-stat-val">${t.shows}公演</span>
+          </div>
+          <div class="tour-stat">
+            <span class="tour-stat-label">Region</span>
+            <span class="tour-stat-val">${t.region}</span>
+          </div>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-venues">${venues}</div>
+          <div class="tour-note">${t.note}</div>
+        </div>
+      </div>
+    `;
+  });
 
   /* ===== サマリー ===== */
   const totalShows = lives.tours.reduce((s,t)=>s+(t.shows||0),0);

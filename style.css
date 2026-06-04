@@ -10,9 +10,9 @@
   --surface-2: #161630;
   --border: #20203a;
   --border-bright: #34345a;
-  /* primary accent = YOASOBI hot pink */
-  --gold: #e8136b;
-  --gold-bright: #ff4d97;
+  /* primary accent = YOASOBI deep rose pink */
+  --gold: #c41960;
+  --gold-bright: #e05080;
   /* blue = YOASOBI royal blue */
   --blue: #2244ff;
   --blue-bright: #5577ff;
@@ -718,12 +718,14 @@ a:hover { color: var(--gold-bright); }
   font-weight: 700;
 }
 .artwork-num {
-  position: absolute; top: 0.6rem; left: 0.6rem;
+  position: absolute; top: 0.55rem; left: 0.55rem;
   font-family: 'Cinzel', Georgia, serif;
-  font-size: 0.55rem; letter-spacing: 0.15em;
-  background: rgba(3,6,16,0.7);
-  color: var(--muted); padding: 0.2rem 0.5rem;
-  border-radius: 3px; backdrop-filter: blur(4px);
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+  background: rgba(6,6,12,0.85);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.22rem 0.55rem;
+  border-radius: 4px; backdrop-filter: blur(6px);
 }
 .artwork-body {
   padding: 0.9rem 1rem;
