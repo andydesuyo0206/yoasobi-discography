@@ -3,21 +3,24 @@
 
 /* ===== VARIABLES ===== */
 :root {
-  --bg: #030610;
-  --bg-2: #060b1a;
-  --surface: #0b1228;
-  --surface-2: #111e38;
-  --border: #1a2640;
-  --border-bright: #2a3f68;
-  --gold: #f5c842;
-  --gold-bright: #ffe580;
-  --blue: #4a8fff;
-  --blue-bright: #7db8ff;
+  /* YOASOBI brand palette: deep black × hot pink × royal blue */
+  --bg: #06060c;
+  --bg-2: #0a0a14;
+  --surface: #0f0f20;
+  --surface-2: #161630;
+  --border: #20203a;
+  --border-bright: #34345a;
+  /* primary accent = YOASOBI hot pink */
+  --gold: #e8136b;
+  --gold-bright: #ff4d97;
+  /* blue = YOASOBI royal blue */
+  --blue: #2244ff;
+  --blue-bright: #5577ff;
   --teal: #2dd4bf;
-  --rose: #f472b6;
-  --muted: #5a6a8a;
-  --prose: #c8d8f0;
-  --white: #eef4ff;
+  --rose: #ff4d97;
+  --muted: #5a5a82;
+  --prose: #c0c0e0;
+  --white: #f0f0ff;
 }
 
 /* ===== BASE ===== */
@@ -65,8 +68,8 @@ a:hover { color: var(--gold-bright); }
 /* ===== RAINBOW RULE ===== */
 .rainbow-rule {
   height: 1px;
-  background: linear-gradient(90deg, var(--blue) 0%, var(--gold) 33%, var(--teal) 66%, var(--rose) 100%);
-  opacity: 0.7;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--blue) 33%, var(--gold-bright) 66%, var(--blue-bright) 100%);
+  opacity: 0.8;
 }
 
 /* ===== HEADER ===== */
@@ -134,19 +137,19 @@ a:hover { color: var(--gold-bright); }
 /* Aurora layers */
 .hero-aurora-1 {
   position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(at 12% 18%, rgba(74,143,255,0.20) 0px, transparent 50%),
-              radial-gradient(at 82% 12%, rgba(245,200,66,0.14) 0px, transparent 55%),
-              radial-gradient(at 78% 82%, rgba(45,212,191,0.12) 0px, transparent 55%),
-              radial-gradient(at 18% 88%, rgba(244,114,182,0.08) 0px, transparent 50%);
+  background: radial-gradient(at 15% 20%, rgba(232,19,107,0.22) 0px, transparent 50%),
+              radial-gradient(at 80% 10%, rgba(34,68,255,0.18) 0px, transparent 55%),
+              radial-gradient(at 75% 80%, rgba(232,19,107,0.12) 0px, transparent 55%),
+              radial-gradient(at 20% 85%, rgba(34,68,255,0.10) 0px, transparent 50%);
   animation: auroraDrift 22s ease-in-out infinite;
 }
 .hero-aurora-2 {
   position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(74,143,255,0.10) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(232,19,107,0.08) 0%, transparent 70%);
 }
 .hero-aurora-3 {
   position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse at 80% 20%, rgba(245,200,66,0.08) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 75% 25%, rgba(34,68,255,0.10) 0%, transparent 60%);
 }
 @keyframes auroraDrift {
   0%, 100% { transform: translate3d(0,0,0) scale(1); opacity: 0.85; }
@@ -158,16 +161,16 @@ a:hover { color: var(--gold-bright); }
 .hero-eyebrow {
   font-family: 'Cinzel', Georgia, serif;
   font-size: 0.68rem; letter-spacing: 0.45em;
-  text-transform: uppercase; color: rgba(245,200,66,0.9);
+  text-transform: uppercase; color: rgba(232,19,107,0.9);
   margin-bottom: 1.5rem;
   display: flex; align-items: center; justify-content: center; gap: 0.75rem;
 }
 .hero-eyebrow::before, .hero-eyebrow::after {
   content: '';
   display: inline-block; width: 2rem; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(245,200,66,0.7));
+  background: linear-gradient(90deg, transparent, rgba(232,19,107,0.7));
 }
-.hero-eyebrow::after { background: linear-gradient(90deg, rgba(245,200,66,0.7), transparent); }
+.hero-eyebrow::after { background: linear-gradient(90deg, rgba(232,19,107,0.7), transparent); }
 
 .hero-label {
   font-family: 'Cinzel', Georgia, serif;
@@ -181,7 +184,7 @@ a:hover { color: var(--gold-bright); }
   font-size: clamp(3.5rem, 9vw, 7.5rem);
   font-weight: 700; line-height: 1.0;
   letter-spacing: 0.08em;
-  background: linear-gradient(90deg, var(--blue-bright) 0%, var(--gold) 30%, var(--gold-bright) 50%, var(--teal) 70%, var(--blue-bright) 100%);
+  background: linear-gradient(90deg, var(--gold-bright) 0%, var(--gold) 25%, var(--blue-bright) 50%, var(--blue) 75%, var(--gold-bright) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
