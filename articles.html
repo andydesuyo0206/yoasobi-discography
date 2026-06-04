@@ -446,9 +446,8 @@ async function loadFeed() {
     }
   } catch {}
 
-  // rss2json.com 経由で Google News RSS を取得
-  const rssUrl = encodeURIComponent('https://news.google.com/rss/search?q=YOASOBI&hl=ja&gl=JP&ceid=JP:ja');
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}&count=30`;
+  // Vercel サーバーレス関数経由で Google News RSS を取得
+  const apiUrl = '/api/feed';
 
   try {
     const res = await fetch(apiUrl);
