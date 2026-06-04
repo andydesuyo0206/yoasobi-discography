@@ -311,12 +311,20 @@
       margin: 0.4rem 0;
     }
     .tl-dot {
-      width: 6px;
-      height: 6px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: var(--gold);
+      border: 2px solid var(--bg);
       flex-shrink: 0;
-      margin: 0.35rem 0 0;
+      margin: 0.1rem 0 0;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 rgba(245,200,66,0);
+    }
+    .tl-dot:hover {
+      transform: scale(1.5);
+      box-shadow: 0 0 0 4px rgba(245,200,66,0.25);
     }
     .tl-body {
       padding: 0.1rem 0 1.75rem;
@@ -352,6 +360,7 @@
     <nav class="site-nav">
       <a href="singles.html" class="nav-link" data-color="blue">Singles</a>
       <a href="albums.html" class="nav-link" data-color="gold">EPs</a>
+      <a href="lives.html" class="nav-link" data-color="teal">Lives</a>
       <a href="profile.html" class="nav-link active" data-color="rose">Profile</a>
     </nav>
   </div>
@@ -368,6 +377,22 @@
 
   <div class="profile-wrap" id="profileWrap"></div>
 </main>
+
+<!-- タイムラインモーダル -->
+<div class="modal-overlay" id="tlModalOverlay">
+  <div class="modal" style="grid-template-columns:1fr; max-width:560px;">
+    <button class="modal-close" id="tlModalClose">✕</button>
+    <div class="modal-body" style="padding:2rem;">
+      <div>
+        <div class="modal-badge" id="tlYear"></div>
+        <div class="modal-title-ja" id="tlHeading" style="font-family:'Inter',sans-serif; font-size:1.3rem; margin-top:0.4rem;"></div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section-content" id="tlBody" style="line-height:1.85;"></div>
+      <div id="tlTopics"></div>
+    </div>
+  </div>
+</div>
 
 <footer class="site-footer">
   <div class="footer-inner">
@@ -503,24 +528,56 @@
   wrap.appendChild(achievCard);
 
   /* ===== 4. タイムライン ===== */
+  const tlOverlay = document.getElementById('tlModalOverlay');
+  const tlClose   = document.getElementById('tlModalClose');
+  tlClose.addEventListener('click', () => { tlOverlay.classList.remove('open'); document.body.style.overflow=''; });
+  tlOverlay.addEventListener('click', e => { if(e.target===tlOverlay){ tlOverlay.classList.remove('open'); document.body.style.overflow=''; }});
+  document.addEventListener('keydown', e => { if(e.key==='Escape') { tlOverlay.classList.remove('open'); document.body.style.overflow=''; }});
+
+  function openTlModal(t) {
+    document.getElementById('tlYear').textContent = t.year;
+    document.getElementById('tlHeading').textContent = t.detail.heading;
+    document.getElementById('tlBody').textContent = t.detail.body;
+    const topics = t.detail.topics.map(tp =>
+      `<div style="display:flex;gap:0.6rem;align-items:center;font-size:0.8rem;color:var(--prose);padding:0.3rem 0;border-bottom:1px solid var(--border);">
+         <span style="color:var(--gold);font-size:0.5rem;">◆</span>${tp}
+       </div>`
+    ).join('');
+    document.getElementById('tlTopics').innerHTML = `
+      <div style="margin-top:1rem;">
+        <div style="font-family:'Cinzel',Georgia,serif;font-size:0.56rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">主なトピック</div>
+        ${topics}
+      </div>
+    `;
+    tlOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
   const tlCard = document.createElement('div');
   tlCard.className = 'timeline-card';
-  const tlItems = p.timeline.map((t, i) => `
-    <div class="tl-item">
+  tlCard.innerHTML = `<div class="section-sub-title">Timeline <span style="font-family:'Inter';font-size:0.65rem;color:var(--muted);font-weight:400;letter-spacing:0.05em;">— 丸をクリックで詳細を表示</span></div>`;
+
+  const tlWrap = document.createElement('div');
+  tlWrap.className = 'timeline-new';
+
+  p.timeline.forEach((t, i) => {
+    const item = document.createElement('div');
+    item.className = 'tl-item';
+    item.innerHTML = `
       <div class="tl-year-col">
-        <div class="tl-dot"></div>
+        <div class="tl-dot" title="${t.year}年の詳細を見る"></div>
         <div class="tl-year">${t.year}</div>
         ${i < p.timeline.length - 1 ? '<div class="tl-line"></div>' : ''}
       </div>
       <div class="tl-body">
         <p class="tl-text">${t.text}</p>
       </div>
-    </div>
-  `).join('');
-  tlCard.innerHTML = `
-    <div class="section-sub-title">Timeline</div>
-    <div class="timeline-new">${tlItems}</div>
-  `;
+    `;
+    item.querySelector('.tl-dot').addEventListener('click', () => openTlModal(t));
+    tlWrap.appendChild(item);
+  });
+
+  tlCard.appendChild(tlWrap);
   wrap.appendChild(tlCard);
 </script>
 </body>

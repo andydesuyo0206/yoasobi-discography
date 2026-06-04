@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lives & Festivals — YOASOBI Discography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .lives-wrap { max-width:1050px; margin:0 auto; padding:0 1.5rem 5rem; display:flex; flex-direction:column; gap:3rem; }
+
+    /* サマリーカード */
+    .summary-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+      gap:1rem;
+    }
+    .summary-card {
+      background:rgba(11,18,40,0.7);
+      border:1px solid var(--border); border-radius:12px;
+      padding:1.25rem; text-align:center;
+    }
+    .summary-num {
+      font-family:'Cinzel',Georgia,serif;
+      font-size:2rem; font-weight:700; color:var(--gold);
+      display:block; line-height:1.1;
+    }
+    .summary-label {
+      font-size:0.72rem; color:var(--muted);
+      letter-spacing:0.1em; margin-top:0.3rem;
+    }
+
+    /* ツアーカード */
+    .tour-card {
+      background:rgba(11,18,40,0.7);
+      border:1px solid var(--border); border-radius:14px;
+      overflow:hidden; transition:border-color 0.3s,box-shadow 0.3s;
+    }
+    .tour-card:hover {
+      border-color:var(--border-bright);
+      box-shadow:0 0 0 1px rgba(74,143,255,0.1),0 8px 24px rgba(0,0,0,0.5);
+    }
+    .tour-card.highlight { border-color:rgba(245,200,66,0.3); }
+    .tour-card-header {
+      padding:1.5rem;
+      display:flex; gap:1.25rem; align-items:flex-start;
+      border-bottom:1px solid var(--border);
+    }
+    .tour-icon {
+      width:3rem; height:3rem; border-radius:10px; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.4rem;
+      background:rgba(74,143,255,0.1); border:1px solid rgba(74,143,255,0.2);
+    }
+    .tour-card.highlight .tour-icon {
+      background:rgba(245,200,66,0.1); border-color:rgba(245,200,66,0.25);
+    }
+    .tour-info { flex:1; }
+    .tour-name {
+      font-family:'Inter',sans-serif;
+      font-size:1.05rem; font-weight:700; color:var(--white);
+      margin-bottom:0.2rem; line-height:1.3;
+    }
+    .tour-name-en { font-size:0.72rem; color:var(--muted); margin-bottom:0.5rem; }
+    .tour-tags { display:flex; gap:0.4rem; flex-wrap:wrap; }
+    .tour-tag {
+      font-family:'Cinzel',Georgia,serif;
+      font-size:0.54rem; letter-spacing:0.15em;
+      text-transform:uppercase; padding:0.18rem 0.55rem;
+      border-radius:3px; border:1px solid;
+    }
+    .tag-domestic { color:var(--blue-bright); border-color:rgba(74,143,255,0.3); background:rgba(74,143,255,0.06); }
+    .tag-asia { color:var(--teal); border-color:rgba(45,212,191,0.3); background:rgba(45,212,191,0.06); }
+    .tag-overseas { color:var(--gold); border-color:rgba(245,200,66,0.3); background:rgba(245,200,66,0.06); }
+    .tag-upcoming { color:var(--rose); border-color:rgba(244,114,182,0.3); background:rgba(244,114,182,0.06); }
+
+    .tour-stats-row {
+      padding:0.85rem 1.5rem;
+      display:flex; gap:2rem; flex-wrap:wrap;
+      border-bottom:1px solid var(--border);
+    }
+    .tour-stat { display:flex; flex-direction:column; gap:0.1rem; }
+    .tour-stat-label {
+      font-family:'Cinzel',Georgia,serif;
+      font-size:0.52rem; letter-spacing:0.2em;
+      text-transform:uppercase; color:var(--muted);
+    }
+    .tour-stat-val { font-size:0.85rem; color:var(--white); font-weight:600; }
+    .tour-card-body { padding:1rem 1.5rem 1.25rem; }
+    .tour-venues {
+      display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.75rem;
+    }
+    .venue-chip {
+      font-size:0.72rem; color:var(--muted);
+      border:1px solid var(--border); border-radius:5px;
+      padding:0.2rem 0.65rem;
+    }
+    .tour-note { font-size:0.84rem; color:var(--muted); line-height:1.75; }
+
+    /* フェスカード */
+    .festivals-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+      gap:1rem;
+    }
+    .fest-card {
+      background:rgba(11,18,40,0.7);
+      border:1px solid var(--border); border-radius:12px;
+      padding:1.25rem; display:flex; flex-direction:column; gap:0.6rem;
+      transition:border-color 0.3s,transform 0.2s;
+    }
+    .fest-card:hover { border-color:var(--border-bright); transform:translateY(-2px); }
+    .fest-card.highlight { border-color:rgba(245,200,66,0.3); background:rgba(245,200,66,0.03); }
+    .fest-top { display:flex; align-items:flex-start; justify-content:space-between; gap:0.5rem; }
+    .fest-name {
+      font-family:'Inter',sans-serif;
+      font-size:0.95rem; font-weight:700; color:var(--white); line-height:1.3;
+    }
+    .fest-spotlight {
+      font-family:'Cinzel',Georgia,serif;
+      font-size:0.5rem; letter-spacing:0.15em;
+      background:var(--gold); color:var(--bg);
+      padding:0.18rem 0.5rem; border-radius:3px; font-weight:700;
+      white-space:nowrap; flex-shrink:0;
+    }
+    .fest-date { font-size:0.75rem; color:var(--muted); }
+    .fest-location { font-size:0.78rem; color:var(--blue-bright); }
+    .fest-note { font-size:0.8rem; color:var(--muted); line-height:1.7; }
+
+    /* セクションタイトル */
+    .lives-section-title {
+      font-family:'Cinzel',Georgia,serif;
+      font-size:0.62rem; letter-spacing:0.35em;
+      text-transform:uppercase; color:var(--muted);
+      margin-bottom:1.25rem;
+    }
+
+    @media (max-width:600px) {
+      .festivals-grid { grid-template-columns:1fr; }
+      .tour-card-header { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="rainbow-rule" style="position:absolute;top:0;left:0;right:0;"></div>
+  <div class="header-inner">
+    <a href="index.html" class="site-brand" style="text-decoration:none;">
+      <span class="brand-name">YOASOBI</span>
+      <span class="brand-sub">Discography</span>
+    </a>
+    <nav class="site-nav">
+      <a href="singles.html" class="nav-link" data-color="blue">Singles</a>
+      <a href="albums.html" class="nav-link" data-color="gold">EPs</a>
+      <a href="lives.html" class="nav-link active" data-color="teal">Lives</a>
+      <a href="profile.html" class="nav-link" data-color="rose">Profile</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <a href="index.html" class="page-back">← Back</a>
+      <h1 class="page-title">Lives & <span class="accent">Festivals</span></h1>
+      <p class="page-subtitle">ツアー・フェス参加歴 — 2020–2026</p>
+    </div>
+  </div>
+
+  <div class="lives-wrap">
+
+    <!-- サマリー -->
+    <section>
+      <div class="lives-section-title">Overview</div>
+      <div class="summary-grid" id="summaryGrid"></div>
+    </section>
+
+    <!-- ツアー -->
+    <section>
+      <div class="lives-section-title">Concert Tours</div>
+      <div style="display:flex;flex-direction:column;gap:1rem;" id="toursGrid"></div>
+    </section>
+
+    <!-- フェス -->
+    <section>
+      <div class="lives-section-title">Festival Appearances</div>
+      <div class="festivals-grid" id="festsGrid"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="rainbow-rule" style="margin-bottom:1.5rem;"></div>
+    <p class="footer-text">YOASOBI Discography Archive &copy; 2025 — Fan-made site.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  const lives = DATA.lives;
+
+  /* ===== サマリー ===== */
+  const totalShows = lives.tours.reduce((s,t)=>s+(t.shows||0),0);
+  const totalAtt   = '約600,000人+';
+  const summaries = [
+    { num: lives.tours.length + '本', label:'Concert Tours' },
+    { num: totalShows + '公演', label:'Total Shows' },
+    { num: totalAtt, label:'Total Attendance' },
+    { num: lives.festivals.length + '本', label:'Festival Appearances' },
+    { num: '4大陸', label:'Regions Covered' },
+    { num: '2020〜', label:'Live Career' },
+  ];
+  const sg = document.getElementById('summaryGrid');
+  summaries.forEach(s => {
+    sg.innerHTML += `
+      <div class="summary-card">
+        <span class="summary-num">${s.num}</span>
+        <span class="summary-label">${s.label}</span>
+      </div>
+    `;
+  });
+
+  /* ===== ツアー ===== */
+  const regionTag = r => {
+    if(r==='国内') return `<span class="tour-tag tag-domestic">国内</span>`;
+    if(r==='アジア') return `<span class="tour-tag tag-asia">Asia</span>`;
+    if(r==='北米') return `<span class="tour-tag tag-overseas">北米</span>`;
+    if(r==='欧州') return `<span class="tour-tag tag-overseas">欧州</span>`;
+    if(r.includes('欧米')) return `<span class="tour-tag tag-overseas">欧米</span><span class="tour-tag tag-asia">Asia</span>`;
+    return `<span class="tour-tag tag-asia">${r}</span>`;
+  };
+  const icons = ['🎪','🌏','🎤','🏟️','🌐','🌍','🚀'];
+  const tg = document.getElementById('toursGrid');
+  lives.tours.forEach((t, i) => {
+    const isUpcoming = t.period.includes('予定');
+    const venues = t.venues.map(v => `<span class="venue-chip">${v}</span>`).join('');
+    tg.innerHTML += `
+      <div class="tour-card${t.highlight ? ' highlight':''}">
+        <div class="tour-card-header">
+          <div class="tour-icon">${icons[i % icons.length]}</div>
+          <div class="tour-info">
+            <div class="tour-name">${t.name}</div>
+            <div class="tour-name-en">${t.nameEn}</div>
+            <div class="tour-tags">
+              ${regionTag(t.region)}
+              ${isUpcoming ? '<span class="tour-tag tag-upcoming">Upcoming</span>' : ''}
+              ${t.highlight ? '<span class="tour-tag tag-overseas">★ Milestone</span>' : ''}
+            </div>
+          </div>
+        </div>
+        <div class="tour-stats-row">
+          <div class="tour-stat">
+            <span class="tour-stat-label">Period</span>
+            <span class="tour-stat-val">${t.period}</span>
+          </div>
+          <div class="tour-stat">
+            <span class="tour-stat-label">公演数</span>
+            <span class="tour-stat-val">${t.shows}公演</span>
+          </div>
+          <div class="tour-stat">
+            <span class="tour-stat-label">動員数</span>
+            <span class="tour-stat-val">${t.attendance}</span>
+          </div>
+          <div class="tour-stat">
+            <span class="tour-stat-label">Region</span>
+            <span class="tour-stat-val">${t.region}</span>
+          </div>
+        </div>
+        <div class="tour-card-body">
+          <div class="tour-venues">${venues}</div>
+          <div class="tour-note">${t.note}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  /* ===== フェス ===== */
+  const regionColor = r => {
+    if(r==='国内') return 'var(--blue-bright)';
+    if(r==='北米') return 'var(--gold)';
+    if(r==='欧州') return 'var(--teal)';
+    return 'var(--rose)';
+  };
+  const fg = document.getElementById('festsGrid');
+  lives.festivals.forEach(f => {
+    fg.innerHTML += `
+      <div class="fest-card${f.highlight?' highlight':''}">
+        <div class="fest-top">
+          <div class="fest-name">${f.name}</div>
+          ${f.highlight ? '<span class="fest-spotlight">★ Milestone</span>' : ''}
+        </div>
+        <div class="fest-date">${f.date}</div>
+        <div class="fest-location" style="color:${regionColor(f.region)};">📍 ${f.location}</div>
+        <div class="fest-note">${f.note}</div>
+      </div>
+    `;
+  });
+</script>
+</body>
+</html>

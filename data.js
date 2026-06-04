@@ -267,52 +267,201 @@ const DATA = {
       background:"映画・アニメ劇場版とのコラボとして制作。劇場という空間の持つ特別な熱量をサウンドで表現した意欲作。",
       reception:"劇場公開と同時リリースにより映画ファンからも広く支持。YOASOBIの2025年第一クールを代表するリード作品。"
     },
+    // 2026
+    {
+      title:"アドレナ", titleEn:"Adrena", year:2026, date:"2026年1月4日（デジタル）/ 3月4日（CD）",
+      cert:"—", chart:"Oricon Combined #42",
+      artwork: WM("Yoasobi - Adrena.png"),
+      novel:"Magical / 津山冬",
+      theme:"アドレナリンが全身を駆け巡るような高揚感。本能のまま突き進む疾走感と、恋愛の焦燥をシンクロさせた楽曲。",
+      background:"TVアニメ「花ざかりの君たちへ」OPテーマとして制作。「BABY」と同時発売のダブルA面シングル。",
+      reception:"Oricon Combined #42。アニメ放送と同時の話題性でSNSに拡散。YOASOBIの2026年最初のリリース作品。"
+    },
+    {
+      title:"BABY", titleEn:"Baby", year:2026, date:"2026年1月4日（デジタル）/ 3月4日（CD）",
+      cert:"—", chart:"—",
+      artwork: WM("Yoasobi - Baby.png"),
+      novel:"My Dear…… / 青木祥樹（Studio Monad）",
+      theme:"「BABY」と呼びかける言葉に込めた、無条件の愛と保護欲。「アドレナ」の疾走感とは対照的な、柔らかく包み込むバラード。",
+      background:"「アドレナ」のカップリングとして「花ざかりの君たちへ」EDテーマに起用。同じアニメのOPとEDをYOASOBIが担当するのは異例の抜擢。",
+      reception:"「アドレナ」との対比が話題に。バラード調の楽曲を求めるファンから高い支持を獲得。"
+    },
   ],
 
   eps: [
     {
-      title:"THE BOOK", badge:"EP", date:"2021年1月6日", label:"Sony Music Labels",
-      sales:"約31万枚", cert:"ゴールド", chart:"Oricon Albums #2",
+      title:"THE BOOK", badge:"EP", series:"THE BOOK Series #1",
+      date:"2021年1月6日", label:"Sony Music Labels",
+      catalog:"XSCL-11", sales:"約31万枚", cert:"ゴールド", chart:"Oricon Albums #2",
       artwork: WM("Yoasobi - The Book.jpg"),
-      tracks:["夜に駆ける","あの夢をなぞって","ハルジオン","たぶん","群青","ハルカ","もう少しだけ"],
-      note:"デビューEP。配信リリース曲を集めた記念碑的作品。初回限定盤には各曲の原作小説を掲載したブックレットが封入。"
+      tracks:[
+        {title:"夜に駆ける", novel:"タナトスの誘惑 / 星野舞夜"},
+        {title:"あの夢をなぞって", novel:"夢の雫と星の花 / いしき蒼太"},
+        {title:"ハルジオン", novel:"それでも、ハッピーエンド / 橋爪駿輝"},
+        {title:"たぶん", novel:"たぶん / しなの"},
+        {title:"群青", novel:"ブルーピリオド / 山口つばさ"},
+        {title:"ハルカ", novel:"遠く遠く / タケウチリョウ"},
+        {title:"もう少しだけ", novel:"めぐる。/ 千春"},
+      ],
+      concept:"配信リリースのみで話題を集めた楽曲を初めてパッケージ化した記念碑的作品。初回限定盤には各曲の原作小説を収録したブックレットが封入され、「小説を音楽にするユニット」のコンセプトを物理的に体現した。",
+      reception:"Oricon Albums最高2位。ゴールド認定（約31万枚）。デジタル発信アーティストが物理メディアで市場を動かした事例として音楽業界で注目を集めた。"
     },
     {
-      title:"THE BOOK 2", badge:"EP", date:"2021年12月1日", label:"Sony Music Labels",
-      sales:"約20万枚", cert:"プラチナム", chart:"Billboard Japan Hot Albums #1",
+      title:"THE BOOK 2", badge:"EP", series:"THE BOOK Series #2",
+      date:"2021年12月1日", label:"Sony Music Labels",
+      catalog:"XSCL-31", sales:"約20万枚", cert:"プラチナム", chart:"Billboard Japan Hot Albums #1",
       artwork: WM("Yoasobi - The Book 2.jpg"),
-      tracks:["怪物","優しい彗星","三原色","ラブレター","大正浪漫","ツバメ"],
-      note:"Billboard Japan Hot Albums 1位獲得。アニメコラボが始まり、YOASOBIの表現の幅が大きく広がった転換点。"
+      tracks:[
+        {title:"怪物", novel:"自分の胸に自分の耳を押し当てて / 板垣巴留"},
+        {title:"優しい彗星", novel:"獅子座流星群のままに / 板垣巴留"},
+        {title:"三原色", novel:"RGB / 小御門優一郎"},
+        {title:"ラブレター", novel:"ラブレター / むつき潤"},
+        {title:"大正浪漫", novel:"大正浪漫 / NATSUMI"},
+        {title:"ツバメ", novel:"ツバメ / 水上下波"},
+      ],
+      concept:"アニメ「BEASTARS」とのコラボを含む、YOASOBIの表現の幅が格段に広がった第2弾。板垣巴留が書き下ろした短編小説2作を原作に持つ楽曲を収録し、漫画原作者とのコラボという新機軸を打ち出した。",
+      reception:"Billboard Japan Hot Albums 1位。プラチナム認定。「怪物」のアニメ効果で従来ファン以外にもリーチし、YOASOBIのブランドを大幅に拡大した。"
     },
     {
-      title:"THE BOOK 3", badge:"EP", date:"2023年10月4日", label:"Sony Music Labels",
-      sales:"約20万枚", cert:"ゴールド", chart:"Oricon Albums #2",
+      title:"THE BOOK 3", badge:"EP", series:"THE BOOK Series #3",
+      date:"2023年10月4日", label:"Sony Music Labels",
+      catalog:"XSCL-111", sales:"約20万枚以上", cert:"ゴールド", chart:"Oricon Albums #2",
       artwork: WM("Yoasobi - The Book 3.png"),
-      tracks:["ADVENTURE","セブンティーン","アイドル","勇者","ビリビリ","祝福"],
-      note:"「アイドル」収録。シリーズ最高の国際的注目を集め、YOASOBIをグローバルアーティストに押し上げた決定打。"
+      tracks:[
+        {title:"ADVENTURE", novel:"冒険者たち / さかしたみか"},
+        {title:"セブンティーン", novel:"夢の雫と星の花（続編） / いしき蒼太"},
+        {title:"アイドル", novel:"45510 / 赤坂アカ"},
+        {title:"勇者", novel:"勇者 / 山田鐘人"},
+        {title:"ビリビリ", novel:"（ポケモンアニメタイアップ）"},
+        {title:"祝福", novel:"揺りかごの星 / 大河内一楼"},
+      ],
+      concept:"「アイドル」という歴史的ヒットを中心に据えた第3弾。推しの子・葬送のフリーレン・ガンダム・ポケモンと、J-POPの枠を超えた多彩なIPとのコラボを一冊に凝縮。シリーズ最高の国際的注目を集めた。",
+      reception:"Oricon Albums 2位。ゴールド認定。「アイドル」の世界的ヒットを受けて海外からの注目が急増し、YOASOBIをグローバルアーティストに押し上げた決定打となった。"
     },
     {
-      title:"E-SIDE", badge:"English EP", date:"2021年11月12日", label:"Sony Music Labels",
-      sales:"約9,500枚", cert:"—", chart:"—",
+      title:"E-SIDE", badge:"English EP", series:"E-SIDE Series #1",
+      date:"2021年11月12日", label:"Sony Music Labels",
+      catalog:"XSCL-21", sales:"約9,500枚", cert:"—", chart:"—",
       artwork: WM("Yoasobi - E-Side.jpeg"),
-      tracks:["Into The Night","Tracing The Dream","Halzion","Maybe","Into The Blue","Farther"],
-      note:"英語版EP。THE BOOKの楽曲を英語でリレコーディングし、英語圏への布石を打った先駆的作品。"
+      tracks:[
+        {title:"Into The Night", novel:"(夜に駆ける 英語版)"},
+        {title:"Tracing The Dream", novel:"(あの夢をなぞって 英語版)"},
+        {title:"Halzion", novel:"(ハルジオン 英語版)"},
+        {title:"Maybe", novel:"(たぶん 英語版)"},
+        {title:"Into The Blue", novel:"(群青 英語版)"},
+        {title:"Farther", novel:"(ハルカ 英語版)"},
+      ],
+      concept:"THE BOOKの収録曲を英語でリレコーディングした、グローバル展開への先駆的作品。単なる翻訳ではなく、各曲のニュアンスを英語で自然に表現することにこだわった。ikuraの英語ボーカルの実力が初めて大きく評価されたEP。",
+      reception:"海外配信での反応が予想を大きく上回り、英語圏のアニメ・J-POPファンに向けた戦略の有効性を証明した。E-SIDEシリーズ継続の礎となった作品。"
     },
     {
-      title:"E-SIDE 2", badge:"English EP", date:"2022年11月18日", label:"Sony Music Labels",
-      sales:"約5,300枚", cert:"—", chart:"—",
+      title:"E-SIDE 2", badge:"English EP", series:"E-SIDE Series #2",
+      date:"2022年11月18日", label:"Sony Music Labels",
+      catalog:"XSCL-61", sales:"約5,300枚", cert:"—", chart:"—",
       artwork: WM("Yoasobi - E-Side 2.png"),
-      tracks:["Mr.","Suki Da","Blessing"],
-      note:"英語版EP第2弾。「祝福（Blessing）」の英語バージョンが収録され、海外アニメファンへのリーチを強化。"
+      tracks:[
+        {title:"Mr.", novel:"(Mr. 英語版)"},
+        {title:"Suki Da", novel:"(好きだ 英語版)"},
+        {title:"Blessing", novel:"(祝福 英語版)"},
+      ],
+      concept:"「祝福」の英語バージョン「Blessing」を収録した第2弾。機動戦士ガンダム 水星の魔女が世界的に注目されたタイミングでのリリースにより、海外アニメファンへのリーチが大幅に拡大。",
+      reception:"「Blessing（祝福の英語版）」がガンダムファンダムで特に高く評価され、海外フォロワー数の急増につながった。"
     },
     {
-      title:"E-SIDE 3", badge:"English EP", date:"2024年4月12日", label:"Sony Music Labels",
-      sales:"約2,800枚", cert:"—", chart:"—",
+      title:"E-SIDE 3", badge:"English EP", series:"E-SIDE Series #3",
+      date:"2024年4月12日", label:"Sony Music Labels",
+      catalog:"XSCL-121", sales:"約2,800枚", cert:"—", chart:"—",
       artwork: WM("Yoasobi - E-Side 3.png"),
-      tracks:["Idol","Bravely You","Biri-Biri"],
-      note:"英語版EP第3弾。「Idol」英語バージョンを収録。Coachella出演直後のリリースで最大の国際的注目を集めた。"
+      tracks:[
+        {title:"Idol", novel:"(アイドル 英語版)"},
+        {title:"Bravely You", novel:"(勇者 英語版)"},
+        {title:"Biri-Biri", novel:"(ビリビリ 英語版)"},
+      ],
+      concept:"Coachella 2024出演直後のリリース。「Idol」英語バージョンはBillboard Globalでヒットした原曲の勢いをそのままに、英語圏のポップマーケットへの本格的な参入を宣言した。",
+      reception:"シリーズ中最大の国際的注目を集め、Coachella出演との相乗効果でYOASOBIの名が一気に世界へ広まった。英語版「Idol」はSpotify海外プレイリストに多数追加。"
     },
   ],
+
+  lives: {
+    tours: [
+      {
+        name:"電光石火 Arena Tour",
+        nameEn:"Denkōsekka Arena Tour",
+        period:"2023年4月〜6月",
+        region:"国内",
+        shows:14, attendance:"130,000人",
+        venues:["さいたまスーパーアリーナ","大阪城ホール","横浜アリーナ 他"],
+        note:"初の全国アリーナツアー。14公演で13万人を動員し、ライブアーティストとしての実力を証明した。"
+      },
+      {
+        name:"Asia Tour 2023–2024",
+        nameEn:"Asia Tour 2023–2024",
+        period:"2023年12月〜2024年1月",
+        region:"アジア",
+        shows:8, attendance:"42,000人",
+        venues:["台湾・韓国・タイ・インドネシア 等"],
+        note:"初の海外ツアー。アジア各国でのライブが現地のYOASOBIファンに熱狂的に迎えられた。"
+      },
+      {
+        name:"Pop Out Zepp Tour",
+        nameEn:"Pop Out Zepp Tour",
+        period:"2024年1月〜3月",
+        region:"国内",
+        shows:12, attendance:"25,000人",
+        venues:["全国Zepp各会場"],
+        note:"小規模会場でより近い距離のライブを届けたホールツアー。完全ソールドアウトが続出。"
+      },
+      {
+        name:"超現実 Dome Live",
+        nameEn:"Chō-genjitsu Dome Live",
+        period:"2024年10月〜11月",
+        region:"国内",
+        shows:4, attendance:"170,000人",
+        venues:["京セラドーム大阪（2公演）","東京ドーム（2公演）"],
+        note:"初のドーム公演。4公演で計17万人を動員し、J-POPアーティストとして頂点を記録。演出・映像ともに圧倒的クオリティが話題に。",
+        highlight: true
+      },
+      {
+        name:"Asia Tour 2024–2025",
+        nameEn:"Asia Tour 2024–2025",
+        period:"2024年12月〜2025年2月",
+        region:"アジア・欧米",
+        shows:14, attendance:"140,000人",
+        venues:["ロンドン OVO Arena Wembley","NY Radio City Music Hall","バルセロナ Primavera Sound 等"],
+        note:"欧米・アジアを横断する大規模ワールドツアー。ロンドン・ニューヨーク・バルセロナでの公演が現地メディアで絶賛された。",
+        highlight: true
+      },
+      {
+        name:"Wandara Hall Tour",
+        nameEn:"Wandara Hall Tour",
+        period:"2025年7月〜11月",
+        region:"国内",
+        shows:40, attendance:"75,000人",
+        venues:["全国ホール会場 40ヶ所"],
+        note:"全国40都市を巡る大規模ホールツアー。地方ファンへのきめ細かいアプローチが話題になった。"
+      },
+      {
+        name:"Never Ending Stories Tour",
+        nameEn:"Never Ending Stories Tour",
+        period:"2026年7月〜8月（予定）",
+        region:"北米",
+        shows:8, attendance:"未定",
+        venues:["北米8都市（詳細未発表）"],
+        note:"北米ヘッドライナーツアー。2026年7〜8月に8公演が予定されており、チケットは即日完売が続出している。"
+      },
+    ],
+    festivals: [
+      { name:"NHK紅白歌合戦", date:"2020年12月31日", location:"NHKホール（東京）", region:"国内", note:"ライブデビュー公演。テレビ越しに全国へ初パフォーマンスを届けた。" },
+      { name:"Rock in Japan Festival", date:"2022年8月", location:"茨城県", region:"国内", note:"国内最大規模の野外フェス初出演。大観衆を前に存在感を爆発させた。" },
+      { name:"Head in the Clouds Festival", date:"2022年12月", location:"ジャカルタ（インドネシア）", region:"海外", note:"海外フェス初出演。東南アジアのファンと初めて直接繋がる歴史的ステージ。" },
+      { name:"Clockenflap", date:"2023年3月", location:"香港", region:"海外", note:"香港の人気フェスに初出演。アジア全域でのブランド認知拡大に貢献。" },
+      { name:"Head in the Clouds Festival USA", date:"2023年8月", location:"パサデナ（カリフォルニア州）", region:"北米", note:"アメリカ初パフォーマンス。現地メディアに「次世代のJ-POPを牽引する存在」と評された。" },
+      { name:"Coachella", date:"2024年4月12日・14日・19日", location:"インディオ（カリフォルニア州）", region:"北米", note:"世界最大の音楽フェスで3日間出演。Billboard誌が「忘れられないステージ」と評するほどの圧巻パフォーマンスを披露。", highlight: true },
+      { name:"Lollapalooza", date:"2024年8月", location:"シカゴ（イリノイ州）", region:"北米", note:"アメリカ最大級フェスに初出演。さらなる北米ファン獲得に成功。" },
+      { name:"Summer Sonic", date:"2024年8月", location:"千葉／大阪", region:"国内", note:"国内最大の洋楽フェスでヘッドライナーとして帰国。ドーム公演前の盛り上がりを最高潮に高めた。" },
+      { name:"Primavera Sound Barcelona", date:"2025年5〜6月", location:"バルセロナ（スペイン）", region:"欧州", note:"ヨーロッパ最大の音楽フェスに初出演。欧州メディアで大きく報道され、ヨーロッパでの認知度が急上昇。" },
+    ]
+  },
 
   profile: {
     concept: "小説を音楽にするユニット",
@@ -366,14 +515,78 @@ const DATA = {
       "日本ゴールドディスク大賞 4冠（2022年）"
     ],
     timeline: [
-      { year:"2018", text:"ayaseがVOCALOIDプロデューサーとして活動開始。ikuraがアコースティックユニット「Pluasonika」として活動中。" },
-      { year:"2019", text:"10月にYOASOBI結成。11月に「夜に駆ける」をデジタルリリース。CDなし・配信のみで各ストリーミングチャートを席巻。" },
-      { year:"2020", text:"「ハルジオン」「群青」など立て続けにリリース。コロナ禍の閉塞感の中でSNSを通じて急速に認知が拡大。" },
-      { year:"2021", text:"1st EP「THE BOOK」リリース。「怪物」が年間デジタル最多売上に。2nd EP「THE BOOK 2」がBillboard Japan Hot Albums 1位。ikuraがソロ「幾田りら」としてデビュー。" },
-      { year:"2022", text:"「祝福」で機動戦士ガンダム 水星の魔女OPを担当。アニメファン層への浸透が加速し、海外認知が急速に拡大。" },
-      { year:"2023", text:"「アイドル」がBillboard Global Excl. U.S.で日本楽曲初の1位。Japan Hot 100で22週1位の歴代最長記録。3rd EP「THE BOOK 3」リリース。" },
-      { year:"2024", text:"Coachella出演・ホワイトハウス晩餐会招待。初ドーム公演「超現実 Dome Live」で4公演17万人を動員。" },
-      { year:"2025", text:"Music Awards Japan 3部門受賞。累計ストリーミング57億回突破。世界基準のJ-POPユニットとして確固たる地位を確立。" }
+      {
+        year:"2018",
+        text:"ayaseがVOCALOIDプロデューサーとして活動開始。ikuraがアコースティックユニット「Pluasonika」として活動中。",
+        detail:{
+          heading:"それぞれの始まり",
+          body:"ayaseは2018年12月にVOCALOIDプロデューサーとしてYouTube・ニコニコ動画に楽曲投稿を開始。独自の疾走感あるサウンドで徐々に注目を集める。同時期、ikura（幾田りら）はアコースティックユニット「Pluasonika」のメンバーとして音楽活動を展開。それぞれが自らの道を歩んでいた2人が、翌年ソニーミュージックを通じて出会うことになる。",
+          topics:["ayaseのボカロP活動開始","ikuraのPluasonika活動"]
+        }
+      },
+      {
+        year:"2019",
+        text:"10月にYOASOBI結成。11月に「夜に駆ける」をデジタルリリース。CDなし・配信のみで各ストリーミングチャートを席巻。",
+        detail:{
+          heading:"伝説の始まり",
+          body:"2019年10月、ayaseがikuraのInstagramに投稿されたカバー動画を見て直接コンタクトを取ったことでYOASOBIが誕生。ソニーミュージックの「小説を音楽にする」企画のもと、デビュー曲「夜に駆ける」をリリース。CDは作らずデジタル配信のみという当時としては異例のスタートながら、SNSで爆発的に拡散。Oricon年間チャートで1位を獲得するという前代未聞の快挙を達成した。",
+          topics:["YOASOBI結成","「夜に駆ける」デジタルリリース","Oricon年間1位（CD未リリース）","制作費約3,000円の伝説"]
+        }
+      },
+      {
+        year:"2020",
+        text:"「ハルジオン」「群青」など立て続けにリリース。コロナ禍の閉塞感の中でSNSを通じて急速に認知が拡大。",
+        detail:{
+          heading:"コロナ禍の光明",
+          body:"新型コロナウイルスの感染拡大による緊急事態宣言が発令される中、YOASOBIは「ハルジオン」「たぶん」「群青」「ハルカ」を次々とリリース。外出自粛で巣ごもりを余儀なくされた人々がSNSでYOASOBIを発見し、共有する流れが生まれた。「群青」は合唱アレンジが世界各地で制作される社会現象に発展。",
+          topics:["「ハルジオン」「群青」など5曲リリース","合唱アレンジ「群青」の世界的拡散","ダイヤモンド認定（群青）"]
+        }
+      },
+      {
+        year:"2021",
+        text:"1st EP「THE BOOK」リリース。「怪物」が年間デジタル最多売上に。2nd EP「THE BOOK 2」がBillboard Japan Hot Albums 1位。ikuraがソロ「幾田りら」としてデビュー。",
+        detail:{
+          heading:"飛躍の年",
+          body:"1月に1st EP「THE BOOK」をリリース。同月「怪物」（BEASTARS第2期OP）がダイヤモンド認定を獲得し、年間デジタル最多売上シングルに。TIME誌「2021年ベスト曲10」の5位に選ばれる国際的評価も獲得。12月には2nd EP「THE BOOK 2」がBillboard Japan Hot Albums 1位を記録。ikuraがソロ「幾田りら」として独立デビューし、アニメ映画「竜とそばかすの姫」で声優としても活躍。",
+          topics:["1st EP「THE BOOK」リリース","「怪物」年間デジタル最多売上","TIME誌ベスト曲5位","2nd EP「THE BOOK 2」Billboard 1位","ikura ソロデビュー（幾田りら）"]
+        }
+      },
+      {
+        year:"2022",
+        text:"「祝福」で機動戦士ガンダム 水星の魔女OPを担当。アニメファン層への浸透が加速し、海外認知が急速に拡大。",
+        detail:{
+          heading:"アニメ×YOASOBIの確立",
+          body:"「祝福」がガンダムシリーズという日本アニメの最高峰とのコラボに抜擢。放送開始直後からSNSで爆発的に拡散し、海外のアニメファンへのリーチが急増。Rock in Japan Festival初出演やHead in the Clouds Festival（ジャカルタ）での海外フェス初出演も果たし、ライブアーティストとしての活動を本格化させた。",
+          topics:["「祝福」ガンダム 水星の魔女OP","Rock in Japan Festival初出演","海外フェス初出演（ジャカルタ）","3×プラチナム認定"]
+        }
+      },
+      {
+        year:"2023",
+        text:"「アイドル」がBillboard Global Excl. U.S.で日本楽曲初の1位。Japan Hot 100で22週1位の歴代最長記録。3rd EP「THE BOOK 3」リリース。",
+        detail:{
+          heading:"世界制覇",
+          body:"4月12日リリースの「アイドル」（推しの子OP）が公開48時間でYouTube 1,500万回再生を達成。Japan Hot 100で22週1位（21週連続）という歴代最長記録を樹立。日本楽曲として史上初めてBillboard Global Excl. U.S.で1位を獲得し、世界190カ国以上でチャートイン。10月には3rd EP「THE BOOK 3」をリリース。北米Head in the Clouds FestivalでのUSA初公演も成功。",
+          topics:["「アイドル」Billboard Global 1位（日本楽曲初）","Japan Hot 100で22週1位（歴代最長）","世界190カ国以上でチャートイン","3rd EP「THE BOOK 3」リリース","USA初ライブパフォーマンス"]
+        }
+      },
+      {
+        year:"2024",
+        text:"Coachella出演・ホワイトハウス晩餐会招待。初ドーム公演「超現実 Dome Live」で4公演17万人を動員。",
+        detail:{
+          heading:"世界の舞台へ",
+          body:"4月、世界最大の音楽フェス「Coachella」に3日間出演しBillboard誌に「忘れられないステージ」と評される。同月、日米首脳会談後のホワイトハウス公式晩餐会に日本代表として招待され、外交の場でも存在感を示した。10〜11月には京セラドーム・東京ドームで計4公演の「超現実 Dome Live」を開催し、17万人を動員する偉業を達成。",
+          topics:["Coachella 2024出演（3日間）","ホワイトハウス公式晩餐会招待","「超現実 Dome Live」17万人動員","Lollapalooza出演","Europe/Asia Tour実施"]
+        }
+      },
+      {
+        year:"2025",
+        text:"Music Awards Japan 3部門受賞。累計ストリーミング57億回突破。世界基準のJ-POPユニットとして確固たる地位を確立。",
+        detail:{
+          heading:"新時代のJ-POPへ",
+          body:"Music Awards Japan 2025で3部門を受賞。RIAJによる累計認定ストリーミングが57億回を突破し、国内最多水準を記録。Primavera Sound Barcelona（ヨーロッパ最大フェス）への初出演も果たし、欧州でのブランド確立が加速。全国40会場の「Wandara Hall Tour」を完遂し、地方ファンへのアプローチも徹底した。",
+          topics:["Music Awards Japan 3部門受賞","累計ストリーミング57億回突破","Primavera Sound Barcelona初出演","Wandara Hall Tour 40会場完遂"]
+        }
+      },
     ]
   }
 };
