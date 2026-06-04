@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Singles — YOASOBI Discography</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400;1,500&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -30,7 +30,7 @@
     <div class="page-header-inner">
       <a href="index.html" class="page-back">← Back</a>
       <h1 class="page-title">Singles <span class="accent">Collection</span></h1>
-      <p class="page-subtitle">28 works · 2019–2025 · 発売年順</p>
+      <p class="page-subtitle">28 works · 2019–2025 · ジャケ写クリックで詳細を表示</p>
     </div>
   </div>
 
@@ -47,9 +47,61 @@
   </div>
 
   <section class="works-section">
-    <div class="works-grid" id="grid"></div>
+    <div class="works-grid" id="grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
   </section>
 </main>
+
+<!-- モーダル -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+
+    <!-- 左: ジャケ写 + メタ情報 -->
+    <div class="modal-art-col">
+      <div id="modalArtwork"></div>
+      <div class="modal-art-meta">
+        <div class="modal-cert" id="modalCert"></div>
+        <div class="modal-chart" id="modalChart"></div>
+        <div class="modal-date" id="modalDate"></div>
+      </div>
+    </div>
+
+    <!-- 右: 詳細テキスト -->
+    <div class="modal-body">
+      <div>
+        <div class="modal-badge" id="modalBadge">Single</div>
+        <div class="modal-title-ja" id="modalTitleJa"></div>
+        <div class="modal-title-en" id="modalTitleEn"></div>
+      </div>
+
+      <div class="modal-divider"></div>
+
+      <div class="modal-section" id="modalNovelSection">
+        <div class="modal-section-label">原作・ソース</div>
+        <div class="modal-novel" id="modalNovel"></div>
+      </div>
+
+      <div class="modal-section">
+        <div class="modal-section-label">歌詞・テーマ</div>
+        <div class="modal-section-content" id="modalTheme"></div>
+      </div>
+
+      <div class="modal-divider"></div>
+
+      <div class="modal-section">
+        <div class="modal-section-label">制作背景</div>
+        <div class="modal-section-content" id="modalBackground"></div>
+      </div>
+
+      <div class="modal-divider"></div>
+
+      <div class="modal-section">
+        <div class="modal-section-label">反響・記録</div>
+        <div class="modal-section-content" id="modalReception"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer class="site-footer">
   <div class="footer-inner">
@@ -61,6 +113,49 @@
 <script src="data.js"></script>
 <script>
   const grid = document.getElementById('grid');
+  const overlay = document.getElementById('modalOverlay');
+  const modalClose = document.getElementById('modalClose');
+
+  // カードグラデーション（ジャケ写読み込み前のプレースホルダー用）
+  const gradients = [
+    'linear-gradient(135deg, #0a1a3a, #1a3a6a)',
+    'linear-gradient(135deg, #1a0a2a, #3a1a6a)',
+    'linear-gradient(135deg, #0a2a1a, #1a5a3a)',
+    'linear-gradient(135deg, #2a1a0a, #5a3a1a)',
+    'linear-gradient(135deg, #0a1a2a, #2a4a6a)',
+  ];
+
+  function openModal(s) {
+    document.getElementById('modalTitleJa').textContent = s.title;
+    document.getElementById('modalTitleEn').textContent = s.titleEn;
+    document.getElementById('modalCert').textContent = s.cert;
+    document.getElementById('modalChart').textContent = s.chart;
+    document.getElementById('modalDate').textContent = s.date;
+    document.getElementById('modalNovel').textContent = s.novel || '—';
+    document.getElementById('modalTheme').textContent = s.theme || '—';
+    document.getElementById('modalBackground').textContent = s.background || '—';
+    document.getElementById('modalReception').textContent = s.reception || '—';
+    document.getElementById('modalBadge').textContent = s.highlight ? '★ Spotlight Single' : 'Single';
+
+    const artEl = document.getElementById('modalArtwork');
+    if (s.artwork) {
+      artEl.innerHTML = `<img class="modal-artwork" src="${s.artwork}" alt="${s.title} ジャケ写" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'modal-artwork-placeholder\\'>YOASOBI</div>'">`;
+    } else {
+      artEl.innerHTML = `<div class="modal-artwork-placeholder">YOASOBI</div>`;
+    }
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
   function render(yearFilter) {
     grid.innerHTML = '';
@@ -78,18 +173,28 @@
       items.forEach((s, i) => {
         const globalIdx = DATA.singles.indexOf(s) + 1;
         const card = document.createElement('div');
-        card.className = 'work-card' + (s.highlight ? ' highlight' : '');
+        card.className = 'work-card-art' + (s.highlight ? ' highlight' : '');
 
+        const grad = gradients[globalIdx % gradients.length];
         card.innerHTML = `
-          <div class="work-card-line" style="background:linear-gradient(90deg, transparent, ${s.highlight ? 'var(--gold)' : 'var(--blue)'}, transparent);"></div>
-          <div class="work-num">#${String(globalIdx).padStart(2,'0')}</div>
-          <div class="work-title-ja">${s.title}</div>
-          <div class="work-title-en">${s.titleEn}</div>
-          <div class="work-date">${s.date}</div>
-          <div class="work-cert">${s.cert}</div>
-          <div class="work-chart">${s.chart}</div>
-          ${s.note ? `<div class="work-note">${s.note}</div>` : ''}
+          <div class="artwork-wrap" style="background:${grad};">
+            ${s.artwork
+              ? `<img src="${s.artwork}" alt="${s.title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                 <div class="artwork-placeholder" style="display:none;">YA</div>`
+              : `<div class="artwork-placeholder">YA</div>`
+            }
+            <div class="artwork-num">#${String(globalIdx).padStart(2,'0')}</div>
+            ${s.highlight ? `<div class="artwork-spotlight">★</div>` : ''}
+          </div>
+          <div class="artwork-body">
+            <div class="artwork-title-ja">${s.title}</div>
+            <div class="artwork-title-en">${s.titleEn}</div>
+            <div class="artwork-date">${s.date}</div>
+            <div class="artwork-cert">${s.cert}</div>
+            <div class="artwork-hover-hint">クリックで詳細 →</div>
+          </div>
         `;
+        card.addEventListener('click', () => openModal(s));
         grid.appendChild(card);
       });
     });

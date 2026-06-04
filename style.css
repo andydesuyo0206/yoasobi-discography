@@ -661,6 +661,183 @@ a:hover { color: var(--gold-bright); }
 .footer-text a { color: var(--muted); }
 .footer-text a:hover { color: var(--gold); }
 
+/* ===== ARTWORK CARD (ジャケ写付き) ===== */
+.work-card-art {
+  position: relative; overflow: hidden;
+  background: rgba(11,18,40,0.7);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex; flex-direction: column;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.work-card-art:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px rgba(74,143,255,0.14), 0 10px 28px rgba(0,0,0,0.55);
+}
+.work-card-art.highlight {
+  border-color: rgba(245,200,66,0.35);
+}
+.artwork-wrap {
+  position: relative; aspect-ratio: 1/1;
+  overflow: hidden; background: var(--surface-2);
+  flex-shrink: 0;
+}
+.artwork-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.work-card-art:hover .artwork-wrap img { transform: scale(1.06); }
+.artwork-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.5rem; font-weight: 700;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.05em;
+}
+.artwork-spotlight {
+  position: absolute; top: 0.6rem; right: 0.6rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.5rem; letter-spacing: 0.15em;
+  background: var(--gold); color: var(--bg);
+  padding: 0.2rem 0.5rem; border-radius: 3px;
+  font-weight: 700;
+}
+.artwork-num {
+  position: absolute; top: 0.6rem; left: 0.6rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.55rem; letter-spacing: 0.15em;
+  background: rgba(3,6,16,0.7);
+  color: var(--muted); padding: 0.2rem 0.5rem;
+  border-radius: 3px; backdrop-filter: blur(4px);
+}
+.artwork-body {
+  padding: 0.9rem 1rem;
+  display: flex; flex-direction: column; gap: 0.3rem;
+}
+.artwork-title-ja { font-size: 0.95rem; font-weight: 600; color: var(--white); line-height: 1.3; }
+.artwork-title-en { font-size: 0.68rem; color: var(--muted); }
+.artwork-date { font-size: 0.68rem; color: var(--prose); }
+.artwork-cert { font-size: 0.64rem; color: var(--blue-bright); font-weight: 600; }
+.artwork-hover-hint {
+  font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em;
+  font-family: 'Cinzel', Georgia, serif;
+  margin-top: 0.2rem; opacity: 0;
+  transition: opacity 0.25s;
+}
+.work-card-art:hover .artwork-hover-hint { opacity: 1; }
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(3,6,16,0.88);
+  backdrop-filter: blur(16px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.modal-overlay.open {
+  opacity: 1; pointer-events: all;
+}
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border-bright);
+  border-radius: 18px;
+  max-width: 860px; width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  display: grid; grid-template-columns: 260px 1fr;
+  box-shadow: 0 0 0 1px rgba(74,143,255,0.1), 0 30px 80px rgba(0,0,0,0.8);
+  transform: translateY(16px);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+
+.modal-art-col {
+  position: relative;
+  background: var(--bg-2);
+  border-radius: 18px 0 0 18px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.modal-artwork {
+  width: 100%; aspect-ratio: 1/1;
+  object-fit: cover; display: block;
+}
+.modal-artwork-placeholder {
+  width: 100%; aspect-ratio: 1/1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 2.5rem; color: rgba(255,255,255,0.1);
+}
+.modal-art-meta {
+  padding: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.4rem;
+  flex: 1;
+}
+.modal-cert { font-size: 0.68rem; color: var(--blue-bright); font-weight: 600; }
+.modal-chart { font-size: 0.68rem; color: var(--muted); }
+.modal-date { font-size: 0.7rem; color: var(--muted); margin-top: 0.25rem; }
+
+.modal-body {
+  padding: 2rem 2rem 2rem 1.75rem;
+  display: flex; flex-direction: column; gap: 1.5rem;
+  overflow-y: auto;
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(11,18,40,0.9);
+  border: 1px solid var(--border);
+  color: var(--muted); border-radius: 50%;
+  width: 2rem; height: 2rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1rem; line-height: 1;
+  transition: all 0.2s; z-index: 10;
+}
+.modal-close:hover { border-color: var(--gold); color: var(--gold); }
+
+.modal-title-ja {
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--white); line-height: 1.2;
+}
+.modal-title-en {
+  font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em;
+  margin-top: 0.2rem;
+}
+.modal-badge {
+  display: inline-block;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.55rem; letter-spacing: 0.2em;
+  background: rgba(245,200,66,0.08);
+  border: 1px solid rgba(245,200,66,0.25);
+  color: var(--gold); padding: 0.2rem 0.6rem;
+  border-radius: 3px; margin-bottom: 0.25rem;
+  width: fit-content;
+}
+
+.modal-section { display: flex; flex-direction: column; gap: 0.5rem; }
+.modal-section-label {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.58rem; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--muted);
+}
+.modal-section-content {
+  font-size: 0.85rem; color: var(--prose);
+  line-height: 1.75;
+}
+.modal-novel {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic; font-size: 0.95rem;
+  color: var(--gold-bright);
+}
+.modal-divider {
+  height: 1px; background: var(--border);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 680px) {
   .brand-sub { display: none; }
