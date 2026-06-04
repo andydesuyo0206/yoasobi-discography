@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles — YOASOBI Discography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .articles-wrap {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .art-section-header {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .art-section-label {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.62rem; letter-spacing: 0.3em;
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .art-section-line { flex: 1; height: 1px; background: var(--border); }
+    .art-section-count {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.56rem; letter-spacing: 0.15em;
+      color: var(--muted); white-space: nowrap;
+    }
+
+    /* ===== LIVE FEED STATUS ===== */
+    .feed-status {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.72rem; color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .feed-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #22c55e; flex-shrink: 0;
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+    .feed-dot.loading { background: var(--gold); animation: pulse-gold 1s ease-in-out infinite; }
+    .feed-dot.error { background: #ef4444; animation: none; }
+    @keyframes pulse-green { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.5);} 50%{box-shadow:0 0 0 5px rgba(34,197,94,0);} }
+    @keyframes pulse-gold  { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+    /* ===== ARTICLE CARD (キュレーション) ===== */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1rem;
+    }
+    .article-card {
+      background: rgba(11,18,40,0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      display: flex; flex-direction: column; gap: 0.7rem;
+      transition: all 0.25s;
+      text-decoration: none;
+      position: relative; overflow: hidden;
+    }
+    .article-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 1px rgba(196,25,96,0.1), 0 8px 24px rgba(0,0,0,0.5);
+      text-decoration: none;
+    }
+    .article-card-line {
+      position: absolute; bottom: 0; left: 0;
+      height: 1px; width: 0;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transition: width 0.5s ease;
+    }
+    .article-card:hover .article-card-line { width: 100%; }
+
+    .article-source-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .article-source {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(196,25,96,0.3);
+      background: rgba(196,25,96,0.07);
+      padding: 0.15rem 0.5rem; border-radius: 3px;
+    }
+    .article-date { font-size: 0.68rem; color: var(--muted); }
+    .article-cat {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.52rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--blue-bright); border: 1px solid rgba(34,68,255,0.25);
+      background: rgba(34,68,255,0.07);
+      padding: 0.12rem 0.45rem; border-radius: 3px;
+    }
+    .article-title {
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--white); line-height: 1.5;
+    }
+    .article-summary {
+      font-size: 0.8rem; color: var(--muted);
+      line-height: 1.7;
+    }
+    .article-read {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.58rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-top: auto; display: flex; align-items: center; gap: 0.35rem;
+      transition: gap 0.2s;
+    }
+    .article-card:hover .article-read { gap: 0.6rem; }
+
+    /* ===== RSS FEED カード ===== */
+    .feed-list {
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .feed-card {
+      background: rgba(11,18,40,0.7);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
+      display: flex; gap: 1.1rem; align-items: flex-start;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .feed-card:hover {
+      border-color: var(--border-bright);
+      background: rgba(17,17,34,0.85);
+    }
+    .feed-card-body { flex: 1; min-width: 0; }
+    .feed-source-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem; flex-wrap: wrap; }
+    .feed-source { font-size: 0.68rem; color: var(--blue-bright); font-weight: 600; }
+    .feed-date { font-size: 0.65rem; color: var(--muted); }
+    .feed-title {
+      font-size: 0.9rem; font-weight: 600; color: var(--white);
+      line-height: 1.45; overflow: hidden;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    }
+    .feed-summary {
+      font-size: 0.76rem; color: var(--muted); line-height: 1.6;
+      margin-top: 0.3rem; overflow: hidden;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    }
+    .feed-card-icon {
+      font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem;
+    }
+
+    /* ===== SKELETON ===== */
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%);
+      background-size: 200% 100%;
+      animation: skeleton-load 1.4s ease-in-out infinite;
+      border-radius: 4px;
+    }
+    @keyframes skeleton-load {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .skeleton-card {
+      background: rgba(11,18,40,0.7);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.1rem 1.3rem;
+      display: flex; gap: 1rem;
+    }
+    .sk-icon { width: 2rem; height: 2rem; border-radius: 50%; flex-shrink: 0; }
+    .sk-body { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    .sk-line { height: 12px; }
+    .sk-line.short { width: 40%; }
+    .sk-line.med { width: 70%; }
+    .sk-line.long { width: 95%; }
+
+    /* ===== フィルター ===== */
+    .cat-filter { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+
+    @media (max-width: 600px) {
+      .articles-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="rainbow-rule" style="position:absolute;top:0;left:0;right:0;"></div>
+  <div class="header-inner">
+    <a href="index.html" class="site-brand" style="text-decoration:none;">
+      <span class="brand-name">YOASOBI</span>
+      <span class="brand-sub">Discography</span>
+    </a>
+    <nav class="site-nav">
+      <a href="singles.html" class="nav-link" data-color="blue">Singles</a>
+      <a href="albums.html" class="nav-link" data-color="gold">EPs</a>
+      <a href="lives.html" class="nav-link" data-color="teal">Lives</a>
+      <a href="novels.html" class="nav-link" data-color="purple">Novels</a>
+      <a href="articles.html" class="nav-link active" data-color="rose">Articles</a>
+      <a href="profile.html" class="nav-link" data-color="rose">Profile</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <a href="index.html" class="page-back">← Back</a>
+      <h1 class="page-title">Articles & <span class="accent">Press</span></h1>
+      <p class="page-subtitle">特集・インタビュー・ニュース — キュレーション＋最新フィード</p>
+    </div>
+  </div>
+
+  <div class="articles-wrap">
+
+    <!-- ===== LIVE FEED ===== -->
+    <section>
+      <div class="art-section-header">
+        <span class="art-section-label" style="color:var(--blue-bright);">📡 Live News Feed</span>
+        <div class="art-section-line"></div>
+        <span class="art-section-count" id="feedCount">読み込み中…</span>
+      </div>
+      <div class="feed-status" id="feedStatus">
+        <div class="feed-dot loading" id="feedDot"></div>
+        <span id="feedStatusText">Google News より最新記事を取得中…</span>
+      </div>
+
+      <div class="cat-filter" id="feedFilter" style="display:none;">
+        <span class="filter-label">Filter:</span>
+        <button class="filter-btn active" data-cat="all">All</button>
+        <button class="filter-btn" data-cat="news">News</button>
+        <button class="filter-btn" data-cat="interview">Interview</button>
+        <button class="filter-btn" data-cat="analysis">Analysis</button>
+      </div>
+
+      <div id="feedList">
+        <!-- Skeletons -->
+        <div class="feed-list" id="skeletons">
+          ${Array(5).fill(0).map(()=>`
+            <div class="skeleton-card">
+              <div class="skeleton sk-icon"></div>
+              <div class="sk-body">
+                <div class="skeleton sk-line short"></div>
+                <div class="skeleton sk-line long"></div>
+                <div class="skeleton sk-line med"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <div id="feedItems" style="display:none;"></div>
+      </div>
+    </section>
+
+    <!-- ===== CURATED ARTICLES ===== -->
+    <section>
+      <div class="art-section-header">
+        <span class="art-section-label" style="color:var(--gold);">📌 Curated — 厳選記事</span>
+        <div class="art-section-line"></div>
+        <span class="art-section-count" id="curatedCount"></span>
+      </div>
+      <div class="articles-grid" id="curatedGrid"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="rainbow-rule" style="margin-bottom:1.5rem;"></div>
+    <p class="footer-text">
+      YOASOBI Discography Archive &copy; 2025 — Fan-made site.<br>
+      記事の著作権は各メディア・著者に帰属します。
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ===== キュレーション記事データ ===== */
+const CURATED = [
+  {
+    url:"https://books.bunshun.jp/articles/-/5706",
+    source:"別冊文藝春秋",
+    date:"2020年9月7日",
+    cat:"interview",
+    catLabel:"Interview",
+    title:"YOASOBI「僕たちのルーツと、いま目指すミライ」",
+    summary:"debutから間もない2020年、ayaseとikuraがルーツとなった音楽（aiko・Maximum the Hormone・Taylor Swift等）と、音楽と小説を融合させる発想の源泉、そしてYOASOBIが目指す先について語った初期の貴重なロングインタビュー。"
+  },
+  {
+    url:"https://jbpress.ismedia.jp/articles/-/95034",
+    source:"JBpress",
+    date:"2026年6月3日",
+    cat:"analysis",
+    catLabel:"Analysis",
+    title:"YOASOBIの大ヒット曲「夜に駆ける」が誕生、ソニーミュージックが描いた「UGC」ビジネスの設計図とは？",
+    summary:"monogatary.comというUGCプラットフォームからYOASOBIが生まれた背景と、ソニーミュージックが設計した「ユーザー生成コンテンツ×音楽」のビジネスモデルを解説。プラットフォーム戦略の観点からYOASOBI誕生の仕組みを読み解く。"
+  },
+  {
+    url:"https://billboard-japan.com/special/detail/3968",
+    source:"Billboard JAPAN",
+    date:"2023年6月",
+    cat:"interview",
+    catLabel:"Interview",
+    title:"YOASOBIが語る「アイドル」誕生秘話、完璧で究極な"アイ"への想い",
+    summary:"「アイドル」が世界的ヒットとなった直後のインタビュー。赤坂アカが書き下ろした原作小説「45510」との向き合い方、ikuraが「アイ」というキャラクターに込めた感情、ayaseのサウンド設計の裏側を深掘り。"
+  },
+  {
+    url:"https://billboard-japan.com/special/detail/4205",
+    source:"Billboard JAPAN",
+    date:"2023年12月",
+    cat:"interview",
+    catLabel:"Interview",
+    title:"目標は「YOASOBIを楽しく続けていくこと」——「アイドル」とツアーを経て、新章の始まりを予感した2023年を振り返る",
+    summary:"Billboard Japan 2023年最多再生シングル「アイドル」の記録的ヒットと、初の全国アリーナツアー「電光石火」を経た2023年を総括するロングインタビュー。世界的な注目が高まる中でのYOASOBIの心境と、2024年以降の展望。"
+  },
+  {
+    url:"https://billboard-japan.com/special/detail/2948",
+    source:"Billboard JAPAN",
+    date:"2020年",
+    cat:"interview",
+    catLabel:"Interview",
+    title:"YOASOBIが語るユニット結成の経緯、音楽と小説を行き来する面白さ",
+    summary:"ayaseがikuraのInstagramカバー動画を見て直接連絡したこと、「小説を音楽にする」というコンセプトが生まれた経緯、二人の出会いから「夜に駆ける」リリースまでの過程を詳細に語るインタビュー。"
+  },
+  {
+    url:"https://billboard-japan.com/special/detail/4552",
+    source:"Billboard JAPAN",
+    date:"2024年10月",
+    cat:"analysis",
+    catLabel:"Analysis",
+    title:"YOASOBI、結成5周年——前例のない道を歩みつづけてきたその足跡を振り返る",
+    summary:"結成5周年を記念した特集記事。「夜に駆ける」デビューからCoachella出演・ドーム公演達成まで、前例のないJ-POPユニットとして切り開いてきた5年間の軌跡を時系列で追う。"
+  },
+  {
+    url:"https://natalie.mu/music/pp/wowow_yoasobi03",
+    source:"音楽ナタリー",
+    date:"2025年",
+    cat:"interview",
+    catLabel:"Interview",
+    title:"「ライブバンド」YOASOBIの旅の終着点——全国を巡り磨き上げたステージ",
+    summary:"WANDARA HALL TOUR 2025 全40公演を終えたYOASOBIの独占インタビュー。ライブバンドとしての進化、ayaseの地元・山口公演での感動、ツアーを通じて体感したファンとの絆について語る。"
+  },
+  {
+    url:"https://monogatary.com/spotwrite/59988",
+    source:"monogatary.com",
+    date:"2021年",
+    cat:"interview",
+    catLabel:"Interview",
+    title:"ヒット曲の原作誕生秘話〜YOASOBI原作者独占インタビュー〜",
+    summary:"「夜に駆ける」「あの夢をなぞって」「ハルジオン」などYOASOBIの原作小説を執筆した作家たちへの独占インタビュー。なぜその小説を書いたか、音楽になったと聞いた時の気持ち、ayaseとの制作プロセスを作家視点で語る。"
+  },
+];
+
+/* ===== キュレーション記事レンダリング ===== */
+const curatedGrid = document.getElementById('curatedGrid');
+document.getElementById('curatedCount').textContent = `${CURATED.length} articles`;
+
+CURATED.forEach(a => {
+  const card = document.createElement('a');
+  card.href = a.url;
+  card.target = '_blank';
+  card.rel = 'noopener noreferrer';
+  card.className = 'article-card';
+  card.innerHTML = `
+    <div class="article-card-line"></div>
+    <div class="article-source-row">
+      <span class="article-source">${a.source}</span>
+      <span class="article-cat">${a.catLabel}</span>
+      <span class="article-date">${a.date}</span>
+    </div>
+    <div class="article-title">${a.title}</div>
+    <div class="article-summary">${a.summary}</div>
+    <span class="article-read">記事を読む →</span>
+  `;
+  curatedGrid.appendChild(card);
+});
+
+/* ===== RSS FEED (Google News via rss2json) ===== */
+const feedItems = document.getElementById('feedItems');
+const skeletons  = document.getElementById('skeletons');
+const feedDot    = document.getElementById('feedDot');
+const feedStatusText = document.getElementById('feedStatusText');
+const feedCount  = document.getElementById('feedCount');
+
+// ページ読み込み時刻をキャッシュキーに使用（30分キャッシュ）
+const CACHE_KEY = 'yoasobi_feed_cache';
+const CACHE_TTL = 30 * 60 * 1000;
+
+function getSourceIcon(source) {
+  if (source.includes('ナタリー') || source.includes('natalie')) return '🎵';
+  if (source.includes('Billboard')) return '📊';
+  if (source.includes('Oricon')) return '📈';
+  if (source.includes('NHK')) return '📺';
+  if (source.includes('YouTube')) return '▶️';
+  if (source.includes('Twitter') || source.includes('X.com')) return '𝕏';
+  return '📰';
+}
+
+function formatDate(dateStr) {
+  try {
+    const d = new Date(dateStr);
+    const now = new Date();
+    const diff = Math.floor((now - d) / 1000);
+    if (diff < 3600)  return `${Math.floor(diff/60)}分前`;
+    if (diff < 86400) return `${Math.floor(diff/3600)}時間前`;
+    if (diff < 604800) return `${Math.floor(diff/86400)}日前`;
+    return d.toLocaleDateString('ja-JP', { year:'numeric', month:'short', day:'numeric' });
+  } catch { return ''; }
+}
+
+function renderFeed(items) {
+  skeletons.style.display = 'none';
+  feedItems.style.display = 'block';
+  document.getElementById('feedFilter').style.display = 'flex';
+  feedItems.innerHTML = '';
+
+  if (!items || items.length === 0) {
+    feedItems.innerHTML = `<p style="color:var(--muted);font-size:0.85rem;text-align:center;padding:2rem;">記事を取得できませんでした。</p>`;
+    return;
+  }
+
+  feedCount.textContent = `${items.length} articles`;
+
+  items.forEach(item => {
+    const source = item.author || item.source || new URL(item.link).hostname;
+    const summary = item.description
+      ? item.description.replace(/<[^>]*>/g, '').slice(0, 120) + '…'
+      : '';
+
+    const card = document.createElement('a');
+    card.href = item.link;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.className = 'feed-card';
+    card.innerHTML = `
+      <div class="feed-card-icon">${getSourceIcon(source)}</div>
+      <div class="feed-card-body">
+        <div class="feed-source-row">
+          <span class="feed-source">${source.replace('https://','').split('/')[0]}</span>
+          <span class="feed-date">${formatDate(item.pubDate)}</span>
+        </div>
+        <div class="feed-title">${item.title}</div>
+        ${summary ? `<div class="feed-summary">${summary}</div>` : ''}
+      </div>
+    `;
+    feedItems.appendChild(card);
+  });
+}
+
+async function loadFeed() {
+  // キャッシュ確認
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      const { ts, data } = JSON.parse(cached);
+      if (Date.now() - ts < CACHE_TTL) {
+        renderFeed(data);
+        feedDot.classList.remove('loading');
+        feedStatusText.textContent = `キャッシュから表示 (${formatDate(new Date(ts).toISOString())}更新)`;
+        return;
+      }
+    }
+  } catch {}
+
+  // rss2json.com 経由で Google News RSS を取得
+  const rssUrl = encodeURIComponent('https://news.google.com/rss/search?q=YOASOBI&hl=ja&gl=JP&ceid=JP:ja');
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}&count=30`;
+
+  try {
+    const res = await fetch(apiUrl);
+    const json = await res.json();
+
+    if (json.status === 'ok' && json.items?.length > 0) {
+      // キャッシュ保存
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: json.items })); } catch {}
+
+      renderFeed(json.items);
+      feedDot.classList.remove('loading');
+      feedDot.style.background = '#22c55e';
+      feedDot.style.animation = 'pulse-green 2s ease-in-out infinite';
+      feedStatusText.textContent = `Google News より ${json.items.length} 件取得 — 30分毎に自動更新`;
+    } else {
+      throw new Error(json.message || 'No items');
+    }
+  } catch (err) {
+    console.warn('RSS fetch failed:', err);
+    skeletons.style.display = 'none';
+    feedItems.style.display = 'block';
+    feedDot.className = 'feed-dot error';
+    feedStatusText.textContent = '自動取得に失敗しました。ページを再読み込みしてお試しください。';
+    feedCount.textContent = '—';
+    feedItems.innerHTML = `
+      <div style="text-align:center;padding:2.5rem;color:var(--muted);">
+        <p style="font-size:1.5rem;margin-bottom:0.75rem;">⚠️</p>
+        <p style="font-size:0.85rem;">フィードの取得に失敗しました。<br>ネットワーク環境を確認後、再読み込みしてください。</p>
+        <button onclick="location.reload()" style="margin-top:1rem;background:none;border:1px solid var(--border);color:var(--muted);padding:0.4rem 1rem;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.8rem;">再読み込み</button>
+      </div>
+    `;
+  }
+}
+
+loadFeed();
+</script>
+</body>
+</html>
