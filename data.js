@@ -83,7 +83,7 @@ const DATA = {
     label: "Sony Music Labels",
     members: [
       {
-        name: "Ayase",
+        name: "ayase",
         role: "Composer / Producer",
         born: "1994年4月4日",
         birthplace: "山口県",
