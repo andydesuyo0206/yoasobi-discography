@@ -493,6 +493,8 @@ const DATA = {
       { name:"Summer Sonic", date:"2024年8月", location:"千葉／大阪", region:"国内", note:"国内最大の洋楽フェスでヘッドライナーとして帰国。ドーム公演前の盛り上がりを最高潮に高めた。" },
       { name:"Primavera Sound Barcelona", date:"2025年5〜6月", location:"バルセロナ（スペイン）", region:"欧州", note:"ヨーロッパ最大の音楽フェスに初出演。欧州メディアで大きく報道され、ヨーロッパでの認知度が急上昇。" },
       { name:"CENTRAL / Echoes Baa", date:"2025年4月5日・6日", location:"横浜赤レンガ倉庫（神奈川）", region:"国内", note:"ソニーミュージックの新レーベル「Echoes」が主催する都市型フェス「CENTRAL」内のEchoes Baaステージに出演。MAISONdes・Aooo・NOMELON NOLEMONらとともに横浜赤レンガ倉庫に集結した。" },
+      { name:"RADWIMPS 20th ANNIVERSARY LIVE TOUR", date:"2025年11月24日", location:"横浜アリーナ（神奈川）", region:"国内", highlight:true, note:"RADWIMPSの20周年アニバーサリーツアーにYOASOBIがゲスト出演。「会心の一撃」（RADWIMPSカバー）を披露したほか、野田洋次郎の呼び込みでikuraが「スパークル」をコラボ。終演後にikuraが「今日が人生で一番の宝物」と語り大きな反響を呼んだ。ライブ映像はYouTubeで公開中。" },
+      { name:"THE MUSIC STADIUM 2026 organized by ONE OK ROCK", date:"2026年4月5日", location:"MUFGスタジアム（国立競技場、東京）", region:"国内", highlight:true, note:"ONE OK ROCK主催の国立競技場2日間公演の2日目にYOASOBIが出演。クライマックスではONE OK ROCKと「Wherever you are」をコラボし、12万人（両日合計）の観客を熱狂させた。J-ROCKの最高峰と対バンしたYOASOBIの存在感を国内外に示した歴史的ステージ。" },
     ]
   },
 
