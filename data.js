@@ -286,16 +286,15 @@ const DATA = {
       background:"「アドレナ」のカップリングとして「花ざかりの君たちへ」EDテーマに起用。同じアニメのOPとEDをYOASOBIが担当するのは異例の抜擢。",
       reception:"「アドレナ」との対比が話題に。バラード調の楽曲を求めるファンから高い支持を獲得。"
     },
-    // UPCOMING
     {
       title:"オリオン", titleEn:"Orion", year:2026, date:"2026年6月26日（デジタル）",
       cert:"—", chart:"—",
-      artwork: null,
-      novel:"地に堕ちた雀（The Fall of a Sparrow）/ オーバーウォッチ公式",
+      artwork: WM("Orion (Yoasobi song).jpg"),
+      novel:"地に堕ちた雀（The Fall of a Sparrow）/ E.C. Myers（オーバーウォッチ公式短編小説）",
       theme:"キリコ・ゲンジ・ハンゾー三者の関係性をオリオン座の三ツ星になぞらえた楽曲。近未来的なサウンドと琴の音色を融合させ、J-POPの魂を乗せたayase渾身の一曲。",
-      background:"世界的人気FPS「オーバーウォッチ」とのコラボ楽曲。東京を舞台にした新マップに合わせてゲーム内短編小説を原作に制作。米国ではアナログ盤（オーバーウォッチコラボジャケット）も限定発売。",
-      reception:"2026年6月26日リリース予定（UPCOMING）。ゲーム×音楽のクロスオーバーとして世界中のファンから注目を集めている。",
-      highlight: false, upcoming: true
+      background:"世界的人気FPS「オーバーウォッチ」とのコラボ楽曲。東京を舞台にした新マップに合わせてゲーム内短編小説を原作に制作。MV制作はA-1 Pictures。米国ではアナログ盤（オーバーウォッチコラボジャケット）も限定発売。「THE BOOK for,」のリードトラックとして先行配信。",
+      reception:"2026年6月26日リリース。ゲーム×音楽のクロスオーバーとして世界中のファンから熱狂的に迎えられ、リリース直後からSNSで爆発的に拡散した。",
+      highlight: false
     },
   ],
 
@@ -377,6 +376,28 @@ const DATA = {
       ],
       concept:"「祝福」の英語バージョン「Blessing」を収録した第2弾。機動戦士ガンダム 水星の魔女が世界的に注目されたタイミングでのリリースにより、海外アニメファンへのリーチが大幅に拡大。",
       reception:"「Blessing（祝福の英語版）」がガンダムファンダムで特に高く評価され、海外フォロワー数の急増につながった。"
+    },
+    {
+      title:"THE BOOK for,", badge:"EP", series:"THE BOOK Series #4",
+      date:"2026年6月26日", label:"Sony Music Labels",
+      catalog:"XSCL-141", sales:"—", cert:"—", chart:"—",
+      artwork: null,
+      tracks:[
+        {title:"オリオン", novel:"地に堕ちた雀（The Fall of a Sparrow）/ E.C. Myers"},
+        {title:"アドレナ", novel:"Magical / 津山冬"},
+        {title:"UNDEAD", novel:"（アンデッドアンラック / 戸塚慶文 コラボ）"},
+        {title:"PLAYERS", novel:"（PLAYERS / e-Sports コラボ）"},
+        {title:"モノトーン", novel:"モノトーン / 東村アキコ"},
+        {title:"BABY", novel:"My Dear…… / 青木祥樹"},
+        {title:"Watch me!", novel:"（原作小説: 非公開）"},
+        {title:"Biri-Biri", novel:"（ポケットモンスターアニメタイアップ）"},
+        {title:"New me", novel:"（英語メイン楽曲）"},
+        {title:"Heart Beat", novel:"（Coachella 2024出演記念作品）"},
+        {title:"舞台に立って", novel:"舞台に立って / 仁科幸"},
+        {title:"劇上", novel:"劇場ものがたり / 三谷幸喜"},
+      ],
+      concept:"「THE BOOK」シリーズの集大成となる4th EP。2024〜2026年にリリースされた12曲を一冊に収録し、シリーズ最大ボリュームの全12曲構成。オーバーウォッチとのコラボ曲「オリオン」が先行リリースされ、CD版には2026年秋のアジア10都市ドーム＆スタジアムツアーのチケット先行抽選シリアルナンバーが封入。完全生産限定盤（CD＋特製バインダー、¥6,600）として発売。",
+      reception:"2026年6月26日リリース。「THE BOOK」シリーズの締めくくりとして、国内外のファンから熱狂的に迎えられた。海外限定でアナログ盤も2形態で発売予定。"
     },
     {
       title:"E-SIDE 3", badge:"English EP", series:"E-SIDE Series #3",
