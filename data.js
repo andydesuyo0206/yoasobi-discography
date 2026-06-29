@@ -381,7 +381,7 @@ const DATA = {
       title:"THE BOOK for,", badge:"EP", series:"THE BOOK Series #4",
       date:"2026年6月26日", label:"Sony Music Labels",
       catalog:"XSCL-141", sales:"—", cert:"—", chart:"—",
-      artwork: null,
+      artwork: WM("Yoasobi - The Book For.png"),
       tracks:[
         {title:"オリオン", novel:"地に堕ちた雀（The Fall of a Sparrow）/ E.C. Myers"},
         {title:"アドレナ", novel:"Magical / 津山冬"},
