@@ -379,7 +379,7 @@ const DATA = {
     },
     {
       title:"THE BOOK for,", badge:"EP", series:"THE BOOK Series #4",
-      date:"2026年6月26日", label:"Sony Music Labels",
+      date:"2026年6月26日", label:"Echoes（Sony Music Labels）",
       catalog:"XSCL-141", sales:"—", cert:"—", chart:"—",
       artwork: WM("Yoasobi - The Book For.png"),
       tracks:[
@@ -522,7 +522,7 @@ const DATA = {
   profile: {
     concept: "小説を音楽にするユニット",
     debut: "2019年11月",
-    label: "Sony Music Labels",
+    label: "Echoes（ソニーミュージック / 2024年9月に移籍）",
     members: [
       {
         name: "ayase",
@@ -657,11 +657,11 @@ const DATA = {
       },
       {
         year:"2024",
-        text:"Coachella出演・ホワイトハウス晩餐会招待。初ドーム公演「超現実 Dome Live」で4公演17万人を動員。",
+        text:"Coachella出演・ホワイトハウス晩餐会招待。9月に新レーベル「Echoes」へ移籍。初ドーム公演「超現実 Dome Live」で4公演17万人を動員。",
         detail:{
           heading:"世界の舞台へ",
-          body:"4月、世界最大の音楽フェス「Coachella」に3日間出演しBillboard誌に「忘れられないステージ」と評される。同月、日米首脳会談後のホワイトハウス公式晩餐会に日本代表として招待され、外交の場でも存在感を示した。10〜11月には京セラドーム・東京ドームで計4公演の「超現実 Dome Live」を開催し、17万人を動員する偉業を達成。",
-          topics:["Coachella 2024出演（3日間）","ホワイトハウス公式晩餐会招待","「超現実 Dome Live」17万人動員","Lollapalooza出演","Europe/Asia Tour実施"]
+          body:"4月、世界最大の音楽フェス「Coachella」に3日間出演しBillboard誌に「忘れられないステージ」と評される。同月、日米首脳会談後のホワイトハウス公式晩餐会に日本代表として招待され、外交の場でも存在感を示した。9月12日、ソニーミュージックが新設したマネジメント＆レーベル「Echoes（エコーズ）」へ移籍（MAISONdes・キタニタツヤらも所属。メンバー・スタッフ体制は継続）。10〜11月には京セラドーム・東京ドームで計4公演の「超現実 Dome Live」を開催し、17万人を動員する偉業を達成。",
+          topics:["Coachella 2024出演（3日間）","ホワイトハウス公式晩餐会招待","新レーベル「Echoes」移籍（9月）","「超現実 Dome Live」17万人動員","Lollapalooza出演"]
         }
       },
       {
