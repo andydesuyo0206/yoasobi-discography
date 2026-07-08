@@ -522,7 +522,7 @@ const DATA = {
   profile: {
     concept: "小説を音楽にするユニット",
     debut: "2019年11月",
-    label: "Echoes（ソニーミュージック / 2024年9月に移籍）",
+    label: "Echoes（ソニーミュージック）",
     members: [
       {
         name: "ayase",
