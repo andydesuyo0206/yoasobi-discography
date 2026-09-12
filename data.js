@@ -296,6 +296,16 @@ const DATA = {
       reception:"2026年6月26日リリース。ゲーム×音楽のクロスオーバーとして世界中のファンから熱狂的に迎えられ、リリース直後からSNSで爆発的に拡散した。",
       highlight: false
     },
+    {
+      title:"咲き誇れ", titleEn:"Sakihokore", year:2026, date:"2026年9月（配信日未定・ブラッサム放送開始:9/28）",
+      cert:"—", chart:"—",
+      artwork: null,
+      novel:"（書き下ろし）/ 綿矢りさ",
+      theme:"自由を求め続けた作家・宇野千代の生き方に着想を得た楽曲。花が咲き誇るように、自らの意志で人生を切り拓く強さと美しさを描く。",
+      background:"NHK連続テレビ小説「ブラッサム」（2026年9月28日放送開始、石橋静河主演、劇中音楽:fox capture plan）主題歌。小説家・綿矢りさが宇野千代の人生とドラマに向き合いながら書き下ろした原作小説がベース。ayaseは宇野千代の自伝「生きて行く私」を読み込み、故郷・山口県岩国市を訪れて楽曲制作に臨んだ。",
+      reception:"ayase「心から自信を持って放つことが出来る楽曲ができた」とコメント。朝ドラ主題歌として全国的な認知拡大が見込まれる。",
+      highlight: false
+    },
   ],
 
   eps: [
@@ -417,23 +427,14 @@ const DATA = {
   lives: {
     upcoming: [
       {
-        name:"YOASOBI ASIA 10-CITY DOME & STADIUM TOUR 2026",
-        nameEn:"Asia 10-City Dome & Stadium Tour 2026",
-        period:"2026年10月〜12月（国内）/ アジア各都市",
+        name:"YOASOBI ASIA 10-CITY DOME & STADIUM TOUR 2026-2027 “超惑星”",
+        nameEn:"Cho Wakusei (Super Planet)",
+        period:"2026年10月〜2027年2月",
         region:"国内・アジア",
         shows:10, attendance:"未定",
-        venues:["大阪（10/24・25）","名古屋（11/7・8）","北海道（11/14・15）","福岡（11/28・29）","東京（12/5・6）","台北・ソウル・香港・シンガポール 等"],
-        note:"日本人アーティスト初となるアジア10都市ドーム＆スタジアムツアー。国内5都市（大阪・名古屋・北海道・福岡・東京）に加え、台北・ソウル・香港・シンガポールなどアジア各都市を巡る。チケットは即日完売が続出。",
+        venues:["京セラドーム大阪（10/24・25）","バンテリンドーム ナゴヤ（11/7・8）","エスコンフィールド北海道（11/14・15）","みずほPayPayドーム福岡（11/28・29）","東京ドーム（12/5・6）","シンガポール・ナショナルスタジアム（2027/2/20・日本人アーティスト史上初の単独公演）","台北・ソウル・香港・+1都市（詳細未発表）"],
+        note:"自身最大規模となるアジア10都市ドーム＆スタジアムツアー。ツアータイトルは「超惑星」。国内5都市10公演に加え、シンガポール国立競技場での単独公演（日本人アーティスト史上初）を含むアジア各都市を巡る。国内公演はチケット即日完売が続出。",
         highlight: true
-      },
-      {
-        name:"Never Ending Stories Tour（北米）",
-        nameEn:"Never Ending Stories North America Tour",
-        period:"2026年7月〜8月",
-        region:"北米",
-        shows:8, attendance:"未定",
-        venues:["北米8都市（詳細発表済み）"],
-        note:"北米ヘッドライナーツアー。8公演が予定されており、チケットは発売後即完売。"
       },
     ],
     tours: [
@@ -494,13 +495,14 @@ const DATA = {
         note:"全国40都市を巡る大規模ホールツアー。地方ファンへのきめ細かいアプローチが話題になった。"
       },
       {
-        name:"Never Ending Stories Tour",
-        nameEn:"Never Ending Stories Tour",
-        period:"2026年7月〜8月（予定）",
+        name:"Never Ending Stories Tour（北米）",
+        nameEn:"YOASOBI North America Tour 2026 “Never Ending Stories”",
+        period:"2026年8月",
         region:"北米",
-        shows:8, attendance:"未定",
-        venues:["北米8都市（詳細未発表）"],
-        note:"北米ヘッドライナーツアー。2026年7〜8月に8公演が予定されており、チケットは即日完売が続出している。"
+        shows:6, attendance:"70,000人",
+        venues:["TD Garden（ボストン）","Barclays Center（ブルックリン）","ハミルトン（オンタリオ）","シアトル","オークランド","Hollywood Bowl（ロサンゼルス）"],
+        note:"自身最大規模となる北米ヘッドライナーツアーを完走。6公演で7万人を動員。8月16日のHollywood Bowl公演はJ-POPアーティスト史上初の単独公演となり、ayaseは「もっと大きくなって帰ってきます」とコメント。",
+        highlight: true
       },
     ],
     festivals: [
@@ -516,6 +518,8 @@ const DATA = {
       { name:"CENTRAL / Echoes Baa", date:"2025年4月5日・6日", location:"横浜赤レンガ倉庫（神奈川）", region:"国内", note:"ソニーミュージックの新レーベル「Echoes」が主催する都市型フェス「CENTRAL」内のEchoes Baaステージに出演。MAISONdes・Aooo・NOMELON NOLEMONらとともに横浜赤レンガ倉庫に集結した。" },
       { name:"RADWIMPS 20th ANNIVERSARY LIVE TOUR", date:"2025年11月24日", location:"横浜アリーナ（神奈川）", region:"国内", highlight:true, note:"RADWIMPSの20周年アニバーサリーツアーにYOASOBIがゲスト出演。「会心の一撃」（RADWIMPSカバー）を披露したほか、野田洋次郎の呼び込みでikuraが「スパークル」をコラボ。終演後にikuraが「今日が人生で一番の宝物」と語り大きな反響を呼んだ。ライブ映像はYouTubeで公開中。" },
       { name:"THE MUSIC STADIUM 2026 organized by ONE OK ROCK", date:"2026年4月5日", location:"MUFGスタジアム（国立競技場、東京）", region:"国内", highlight:true, note:"ONE OK ROCK主催の国立競技場2日間公演の2日目にYOASOBIが出演。クライマックスではONE OK ROCKと「Wherever you are」をコラボし、12万人（両日合計）の観客を熱狂させた。J-ROCKの最高峰と対バンしたYOASOBIの存在感を国内外に示した歴史的ステージ。" },
+      { name:"OSHEAGA Music and Arts Festival", date:"2026年7月", location:"モントリオール（カナダ）", region:"北米", note:"カナダの大型フェスに出演。北米ヘッドライナーツアー「Never Ending Stories」に先駆けて現地ファンとの熱狂を作り上げた。" },
+      { name:"Lollapalooza", date:"2026年8月", location:"シカゴ（イリノイ州）", region:"北米", note:"2024年に続く2度目の出演。北米ヘッドライナーツアー期間中のハイライトの一つとして評判を呼んだ。" },
     ]
   },
 
@@ -559,6 +563,10 @@ const DATA = {
       nameOrigin: "「夜遊び」を連想させる「YOASOBI（夜遊び）」に由来。夜に活動するユニットとしての性格と、それぞれの本業の傍らで活動を始めた経緯を反映している。"
     },
     achievements: [
+      {
+        text: "国内ストリーミング累計100億回再生を突破（Billboard JAPAN、2026年7月）",
+        detail: "Billboard JAPAN調べで全楽曲の国内ストリーミング累計再生回数が100億回を突破。Mrs. GREEN APPLE・Official髭男dism・back numberに次ぐ史上4組目、グループ/ユニットとしては史上初の到達となった。"
+      },
       {
         text: "「夜に駆ける」ストリーミング累計10億回突破（国内楽曲初）",
         detail: "2019年11月リリースのデビュー曲。CDを一切リリースせず配信のみで国内初の10億回再生を達成。YouTubeでは5ヶ月で1,000万回再生を突破し、Oricon年間チャートもデジタル配信のみのシングルとして史上初の首位を獲得した。"
@@ -671,6 +679,15 @@ const DATA = {
           heading:"新時代のJ-POPへ",
           body:"Music Awards Japan 2025で3部門を受賞。RIAJによる累計認定ストリーミングが57億回を突破し、国内最多水準を記録。Primavera Sound Barcelona（ヨーロッパ最大フェス）への初出演も果たし、欧州でのブランド確立が加速。全国40会場の「Wandara Hall Tour」を完遂し、地方ファンへのアプローチも徹底した。",
           topics:["Music Awards Japan 3部門受賞","累計ストリーミング57億回突破","Primavera Sound Barcelona初出演","Wandara Hall Tour 40会場完遂"]
+        }
+      },
+      {
+        year:"2026",
+        text:"「オリオン」でオーバーウォッチとコラボしEPシリーズ完結。国内ストリーミング累計100億回突破（史上4組目・ユニット初）。北米ヘッドライナーツアーを完走。朝ドラ「ブラッサム」主題歌「咲き誇れ」を発表。",
+        detail:{
+          heading:"止まらない伝説",
+          body:"6月、世界的人気FPS「オーバーウォッチ」とのコラボ楽曲「オリオン」を含む4th EP「THE BOOK for,」をリリースし「THE BOOK」シリーズを完結させた。7月、Billboard JAPAN調べで国内ストリーミング累計100億回再生を突破し、グループ/ユニットとして史上初の快挙を達成。8月には自身最大規模となる北米ヘッドライナーツアー「Never Ending Stories」を6公演7万人動員で完走し、Hollywood Bowlでの単独公演はJ-POPアーティスト史上初の快挙に。9月には次作の朝ドラ「ブラッサム」主題歌「咲き誇れ」（原作:綿矢りさ）を発表し、10月からは自身最大規模となるアジア10都市ドーム＆スタジアムツアー「超惑星」が開幕する。",
+          topics:["「オリオン」オーバーウォッチコラボ・EP「THE BOOK for,」完結","国内ストリーミング累計100億回突破（ユニット史上初）","北米ツアー「Never Ending Stories」完走（6公演7万人）","Hollywood Bowl単独公演（J-POP史上初）","朝ドラ「ブラッサム」主題歌「咲き誇れ」発表","アジアツアー「超惑星」始動（10月〜）"]
         }
       },
     ]
