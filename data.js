@@ -299,7 +299,7 @@ const DATA = {
     {
       title:"咲き誇れ", titleEn:"Sakihokore", year:2026, date:"2026年10月14日（デジタル）",
       cert:"—", chart:"—",
-      artwork: null,
+      artwork: WM("Yoasobi - Sakihokore.png"),
       novel:"桜(はな)の命は不滅なり / 綿矢りさ（書き下ろし）",
       theme:"自由を求め続けた作家・宇野千代の生き方に着想を得た楽曲。花が咲き誇るように、自らの意志で人生を切り拓く強さと美しさを描く。",
       background:"NHK連続テレビ小説「ブラッサム」（2026年9月28日放送開始、石橋静河主演、劇中音楽:fox capture plan）主題歌。小説家・綿矢りさが宇野千代の人生とドラマに向き合いながら書き下ろした原作小説がベース。ayaseは宇野千代の自伝「生きて行く私」を読み込み、故郷・山口県岩国市を訪れて楽曲制作に臨んだ。",
@@ -309,7 +309,7 @@ const DATA = {
     {
       title:"KILLA", titleEn:"KILLA", year:2026, date:"2026年11月11日（デジタル）",
       cert:"—", chart:"—",
-      artwork: null,
+      artwork: WM("Yoasobi - Killa.png"),
       novel:"センパイを殺したいので女装する / 魔猫よあの",
       theme:"京都の街外れの高校が舞台。「卒業する日に理想の美少女に殺されたい」という一学年上のセンパイの願いを叶えるため、二年生の「俺」が奔走する、危険で可笑しく切実な青春劇。恋や愛の歪みと純粋さを描く。",
       background:"作家発掘・育成プロジェクト「『はじめての』文芸部」発の楽曲。原作は同プロジェクトから生まれた魔猫よあのデビュー作（水鈴社、2026年10月16日刊行）。ボカロPとして活動するAyaseの旧友・ツミキを編曲に迎え、Ayase以外をアレンジャーに招いた初のYOASOBI楽曲となった（編曲:ツミキ、Ayase）。",
@@ -436,7 +436,7 @@ const DATA = {
       title:"E-SIDE 4", badge:"English EP", series:"E-SIDE Series #4",
       date:"2026年4月24日", label:"Echoes（Sony Music Labels）",
       catalog:"—", sales:"—", cert:"—", chart:"—",
-      artwork: null,
+      artwork: WM("Yoasobi - E-Side 4.png"),
       tracks:[
         {title:"ADRENA", novel:"(アドレナ 英語版)"},
         {title:"UNDEAD", novel:"(UNDEAD 英語版)"},
