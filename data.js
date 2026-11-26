@@ -297,13 +297,23 @@ const DATA = {
       highlight: false
     },
     {
-      title:"咲き誇れ", titleEn:"Sakihokore", year:2026, date:"2026年9月（配信日未定・ブラッサム放送開始:9/28）",
+      title:"咲き誇れ", titleEn:"Sakihokore", year:2026, date:"2026年10月14日（デジタル）",
       cert:"—", chart:"—",
       artwork: null,
-      novel:"（書き下ろし）/ 綿矢りさ",
+      novel:"桜(はな)の命は不滅なり / 綿矢りさ（書き下ろし）",
       theme:"自由を求め続けた作家・宇野千代の生き方に着想を得た楽曲。花が咲き誇るように、自らの意志で人生を切り拓く強さと美しさを描く。",
       background:"NHK連続テレビ小説「ブラッサム」（2026年9月28日放送開始、石橋静河主演、劇中音楽:fox capture plan）主題歌。小説家・綿矢りさが宇野千代の人生とドラマに向き合いながら書き下ろした原作小説がベース。ayaseは宇野千代の自伝「生きて行く私」を読み込み、故郷・山口県岩国市を訪れて楽曲制作に臨んだ。",
-      reception:"ayase「心から自信を持って放つことが出来る楽曲ができた」とコメント。朝ドラ主題歌として全国的な認知拡大が見込まれる。",
+      reception:"ayase「心から自信を持って放つことが出来る楽曲ができた」とコメント。2026年10月14日に配信リリースされ、同日20時にMVを公開（アニメーター・藍にいな、刈谷暢秀が制作）。",
+      highlight: false
+    },
+    {
+      title:"KILLA", titleEn:"KILLA", year:2026, date:"2026年11月11日（デジタル）",
+      cert:"—", chart:"—",
+      artwork: null,
+      novel:"センパイを殺したいので女装する / 魔猫よあの",
+      theme:"京都の街外れの高校が舞台。「卒業する日に理想の美少女に殺されたい」という一学年上のセンパイの願いを叶えるため、二年生の「俺」が奔走する、危険で可笑しく切実な青春劇。恋や愛の歪みと純粋さを描く。",
+      background:"作家発掘・育成プロジェクト「『はじめての』文芸部」発の楽曲。原作は同プロジェクトから生まれた魔猫よあのデビュー作（水鈴社、2026年10月16日刊行）。ボカロPとして活動するAyaseの旧友・ツミキを編曲に迎え、Ayase以外をアレンジャーに招いた初のYOASOBI楽曲となった（編曲:ツミキ、Ayase）。",
+      reception:"配信日の11月11日20時、ツアー「超惑星」の公演で披露した同曲のライブ映像をYouTubeで公開。",
       highlight: false
     },
   ],
@@ -422,18 +432,37 @@ const DATA = {
       concept:"Coachella 2024出演直後のリリース。「Idol」英語バージョンはBillboard Globalでヒットした原曲の勢いをそのままに、英語圏のポップマーケットへの本格的な参入を宣言した。",
       reception:"シリーズ中最大の国際的注目を集め、Coachella出演との相乗効果でYOASOBIの名が一気に世界へ広まった。英語版「Idol」はSpotify海外プレイリストに多数追加。"
     },
+    {
+      title:"E-SIDE 4", badge:"English EP", series:"E-SIDE Series #4",
+      date:"2026年4月24日", label:"Echoes（Sony Music Labels）",
+      catalog:"—", sales:"—", cert:"—", chart:"—",
+      artwork: null,
+      tracks:[
+        {title:"ADRENA", novel:"(アドレナ 英語版)"},
+        {title:"UNDEAD", novel:"(UNDEAD 英語版)"},
+        {title:"Watch me!", novel:"(Watch me! 英語版)"},
+        {title:"BABY", novel:"(BABY 英語版)"},
+        {title:"New me", novel:"(New me 英語版)"},
+        {title:"Monotone", novel:"(モノトーン 英語版)"},
+        {title:"On the Stage", novel:"(舞台に立って 英語版)"},
+        {title:"PLAYERS", novel:"(PLAYERS 英語版)"},
+        {title:"HEART BEAT", novel:"(HEART BEAT 英語版)"},
+      ],
+      concept:"英語版EPシリーズ第4弾。2024〜2026年にリリースした楽曲を全9曲、英語詞で収録したデジタルEP（再生時間約32分）。英語詞はKonnie Aoki。「HEART BEAT」は英語でコーラスを新たに録り直している。収録曲MVの3夜連続YouTubeプレミア公開も実施。",
+      reception:"2026年8月開始の北米ヘッドライナーツアーに先立つ4月24日にリリース。"
+    },
   ],
 
   lives: {
     upcoming: [
       {
-        name:"YOASOBI ASIA 10-CITY DOME & STADIUM TOUR 2026-2027 “超惑星”",
+        name:"YOASOBI 11-CITY ASIA-OCEANIA TOUR 2026-2027 “超惑星”",
         nameEn:"Cho Wakusei (Super Planet)",
-        period:"2026年10月〜2027年2月",
-        region:"国内・アジア",
-        shows:10, attendance:"未定",
-        venues:["京セラドーム大阪（10/24・25）","バンテリンドーム ナゴヤ（11/7・8）","エスコンフィールド北海道（11/14・15）","みずほPayPayドーム福岡（11/28・29）","東京ドーム（12/5・6）","シンガポール・ナショナルスタジアム（2027/2/20・日本人アーティスト史上初の単独公演）","台北・ソウル・香港・+1都市（詳細未発表）"],
-        note:"自身最大規模となるアジア10都市ドーム＆スタジアムツアー。ツアータイトルは「超惑星」。国内5都市10公演に加え、シンガポール国立競技場での単独公演（日本人アーティスト史上初）を含むアジア各都市を巡る。国内公演はチケット即日完売が続出。",
+        period:"2026年10月〜2027年3月",
+        region:"国内・アジア・オセアニア",
+        shows:17, attendance:"未定",
+        venues:["京セラドーム大阪（10/24・25）","バンテリンドーム ナゴヤ（11/7・8）","エスコンフィールド北海道（11/14・15）","みずほPayPayドーム福岡（11/28・29）","東京ドーム（12/5・6）","台北・TAIPEI DOME（2027/1/9・10）","香港・ASIAWORLD-ARENA（2027/1/21・22）","シンガポール・ナショナルスタジアム（2027/2/20・日本人アーティスト史上初の単独公演）","メルボルン・ROD LAVER ARENA（2027/3/17）","シドニー・AFTERPAY ARENA（2027/3/19）"],
+        note:"自身最大規模のアジア・オセアニアツアー。2026年11月に香港公演の詳細と初のオーストラリア公演（メルボルン・シドニー）の追加を発表し、ツアー名を「10-CITY ASIA」から「11-CITY ASIA-OCEANIA」へ変更。一部の国・地域・会場での開催見送りも同時に発表されている（韓国公演は2027年4月17日と案内されていたが、会場・開催可否は要確認）。公演数は国内10＋台北2＋香港2＋シンガポール1＋豪州2の合計。",
         highlight: true
       },
     ],
