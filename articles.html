@@ -161,6 +161,17 @@
 
   <div class="articles-wrap">
 
+    <!-- 最新ニュース（自動更新フィード: /api/feed → Google News RSS） -->
+    <section style="margin-bottom:2.5rem;">
+      <div class="art-section-header">
+        <span class="art-section-label" style="color:var(--rose);">最新ニュース（自動更新）</span>
+        <div class="art-section-line"></div>
+        <span class="art-section-count" id="feedCount"></span>
+      </div>
+      <div class="articles-grid" id="feedGrid"></div>
+      <p class="no-results" id="feedStatus" style="display:block;">ニュースを読み込み中…</p>
+    </section>
+
     <section>
       <!-- 検索 & フィルター -->
       <div class="search-wrap">
@@ -386,6 +397,65 @@ document.querySelectorAll('.cat-filter .filter-btn').forEach(btn => {
     applyFilter();
   });
 });
+
+// ===== 最新ニュース（自動更新フィード） =====
+const FEED_MAX = 12;
+const feedGrid = document.getElementById('feedGrid');
+const feedStatus = document.getElementById('feedStatus');
+const feedCount = document.getElementById('feedCount');
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+
+function renderFeed(items) {
+  feedGrid.innerHTML = '';
+  const list = (items || []).slice(0, FEED_MAX);
+  list.forEach(it => {
+    // Google Newsのタイトル末尾「 - 媒体名」を除去
+    let title = it.title || '';
+    if (it.source && title.endsWith(' - ' + it.source)) {
+      title = title.slice(0, -(' - ' + it.source).length);
+    }
+    const d = new Date(it.pubDate);
+    const date = isNaN(d) ? '' : d.toLocaleDateString('ja-JP', { year:'numeric', month:'long', day:'numeric' });
+    const card = document.createElement('a');
+    card.href = it.link;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.className = 'article-card';
+    card.innerHTML = `
+      <div class="article-card-line"></div>
+      <div class="article-source-row">
+        <span class="article-source">${esc(it.source || 'Google News')}</span>
+        <span class="article-cat cat-news">News</span>
+        <span class="article-date">${esc(date)}</span>
+      </div>
+      <div class="article-title">${esc(title)}</div>
+      <span class="article-read">記事を読む →</span>
+    `;
+    feedGrid.appendChild(card);
+  });
+  feedCount.textContent = `${list.length} articles`;
+  feedStatus.style.display = list.length ? 'none' : 'block';
+  if (!list.length) feedStatus.textContent = '現在表示できるニュースがありません。';
+}
+
+async function loadFeed() {
+  try {
+    const res = await fetch('/api/feed');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const json = await res.json();
+    if (json.status !== 'ok') throw new Error(json.message || 'feed error');
+    renderFeed(json.items);
+  } catch (err) {
+    console.error('[DEBUG] loadFeed 失敗: fetch /api/feed', err);
+    feedStatus.style.display = 'block';
+    feedStatus.textContent = 'ニュースの取得に失敗しました。時間をおいて再読み込みしてください。';
+  }
+}
+loadFeed();
 </script>
 </body>
 </html>
