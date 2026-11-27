@@ -16,7 +16,7 @@ YOASOBIのディスコグラフィ・軌跡をまとめたファンメイドの�
 | `albums.html` | EP一覧（THE BOOK シリーズ / E-SIDE シリーズ 計8作品） |
 | `lives.html` | ライブ・フェス出演歴。Leaflet による世界地図表示つき |
 | `novels.html` | 原作小説一覧（31作品）。ソース別フィルター・検索対応 |
-| `articles.html` | 厳選記事アーカイブ。カテゴリフィルター・検索対応 |
+| `articles.html` | 最新ニュースの自動フィード + 厳選記事アーカイブ。カテゴリフィルター・検索対応 |
 | `profile.html` | メンバープロフィール・実績・年表タイムライン |
 
 ## 技術構成
@@ -25,7 +25,7 @@ YOASOBIのディスコグラフィ・軌跡をまとめたファンメイドの�
 - **`data.js`** — シングル・EP・ライブ・プロフィールの全データを一元管理
 - **ジャケット画像** — Wikipedia の `Special:FilePath` リダイレクト経由で取得
 - **地図表示** — [Leaflet](https://leafletjs.com/)（lives.html）
-- **`api/feed.js`** — Vercel サーバーレス関数（現在未使用）
+- **`api/feed.js`** — Vercel サーバーレス関数（Google News RSS を取得し、`articles.html` の「最新ニュース」に表示。30分キャッシュ）
 
 ## デプロイ
 
